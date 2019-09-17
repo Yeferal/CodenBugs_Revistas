@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: cadetblue;
+    background-size: cover;
+    font-family: sans-serif;
+    height: 100vh;
+  }
+  h1, h2{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .foto{
+    top: 20%;
+    left: 10%;
+    position: absolute;
+    transform: translate(-10%, -20%);
+    box-sizing: border-box;
+    padding: 30px 30px;
+    text-align: center;
+  }
+  .dataBasic{
+    height: 200px;
+    width: 500px;
+    top: 20%;
+    left:25%;
+    position: absolute;
+    transform: translate(-10%, -20%);
+    box-sizing: border-box;
+    padding: 30px 30px;
+    text-align: center;
+  }
+
+  .dataDescript{
+    top: 60%;
+    left: 10%;
+    position: absolute;
+    transform: translate(-10%, -20%);
+    box-sizing: border-box;
+    padding: 30px 30px;
+    text-align: center;
+    background: #0087c5;
+  }
+
+  .fotoPerfil {
+      width: 200px;
+      height: 200px;
+      background:url(img/perfilVacio.jpg) no-repeat center top;
+      
+  }
+  .foto .botonSubir{
+    
+    border: none;
+    outline: none;
+    height: 20px;
+    background: #0087c5;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 18px;
+
+  }
+  .foto .botonSubir:hover{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+  }
+
+  .dataDescript input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #b80f22;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  
+  .dataDescript input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+  }
+  .dataDescript label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }

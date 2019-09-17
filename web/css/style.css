@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(img/imgInicio2.jpg) no-repeat center top;
+    background-size: cover;
+    font-family: sans-serif;
+    height: 100vh;
+  }
+  
+  .container {
+    width: 520px;
+    height: 620px;
+    background: #395d6e;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+  }
+  
+  .container h2 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 32px;
+  }
+  
+  .container label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .container input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .container input[type="text"], .container input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .container input[type="submit"] {
+    border: none;
+    border-top: 5px;
+    outline: none;
+    height: 40px;
+    background: #b80f22;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  
+  .container input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+  }
+  
+  .container a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+  }
+  
+  .container a:hover {
+    color: #fff;
+  }
+
+  .container .radio *{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    padding: 0;
+  }
+  .container .radio input[type="radio"]{
+    display: none;
+  }
+
+  .container .radio label{
+    color: #c52336;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 5px 15px 5px 51px;
+    display: inline-block;
+    position: relative;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .container .radio label:hover{
+    background:  rgba(0, 116, 217, 0.1);
+
+  }
+
+  .container .radio label:before{
+    content: "";
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    background: none;
+    border: 3px solid #c52336;
+    border-radius: 50%;
+    position: absolute;
+    left: 15px;
+  }
+
+  .container .radio input[type="radio"]:checked + label{
+    padding: 5px 15px;
+    background:  #c52336;
+    border-radius: 2px;
+    color: #fff;
+  }
+
+  .container .radio [type="radio"]:checked + label:before{
+    display: none;    
+  }
