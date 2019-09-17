@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Code n' Bugs</title>
         <link rel="stylesheet" href="css/stilo.css">
-        <% Conexion cone = new Conexion(); %>
+        
     </head>
     <body>
         <% Conexion coned = new Conexion(); %>

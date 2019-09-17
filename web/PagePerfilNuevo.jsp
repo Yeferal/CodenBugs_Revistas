@@ -4,15 +4,29 @@
     Author     : yefer
 --%>
 
+<%@page import="com.revista.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id= "usuario" class="com.revista.Conexion"></jsp:useBean>
+<jsp:setProperty name="usuario" property="*" ></jsp:setProperty>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Code n' Bugs</title>
     <link rel="stylesheet" href="css/stiloPerfilNuevo.css">
+    
     </head>
     <body>
+        
+        <% 
+                String nombre=request.getParameter("nombreUser");
+                String tipo=request.getParameter("tipoUser");
+            %>
+            
+            <% usuario.conectar();
+            
+                 %>
+                 
         <div class="foto">
             <div class="fotoPerfil">
 
@@ -21,10 +35,10 @@
             <button type="button" class="botonSubir">Subir Foto</button>
       </div>
       <div class="dataBasic">
-            <% 
-                String nombre=request.getParameter("nombreUser");
-                String tipo=request.getParameter("tipoUser");
-            %>
+          
+            
+            
+            
           <h1>Nombre: <%=nombre%></h1>
           <h2>Tipo: <%=tipo%> </h2>
       </div>
