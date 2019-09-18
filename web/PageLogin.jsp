@@ -7,6 +7,7 @@
 <%@page import="com.revista.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.revista.*" %>
+<jsp:useBean id= "usuarios" class="com.revista.Usuario"></jsp:useBean>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +17,9 @@
         
     </head>
     <body>
-        <% Conexion coned = new Conexion(); %>
+    <%
+        
+        %>
         <div class="login-box">
             <h1>Inicio</h1>
             <form action="">

@@ -20,11 +20,11 @@
         
         <% 
                 String nombre=request.getParameter("nombreUser");
-                String tipo=request.getParameter("tipoUser");
+                String tipo=request.getParameter("passwrd1");
             %>
             
-            <% usuario.conectar();
-            
+            <% 
+                //usuario.insertarUsuario(nombre, "123456", tipo);
                  %>
                  
         <div class="foto">

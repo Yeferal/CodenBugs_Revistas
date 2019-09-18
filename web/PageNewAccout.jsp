@@ -6,7 +6,7 @@
 
 <%@page import="com.revista.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id= "usuario" class="com.revista.Conexion"></jsp:useBean>
+<%--<jsp:useBean id= "usuario" class="com.revista.Conexion"></jsp:useBean>--%>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +21,7 @@
           <div>
                 <h2>Datos de Registro</h2>
           </div>
-            <form action="PagePerfilNuevo.jsp" method="GET">
+            <form action="PagePerfilNuevo.jsp" method="POST">
             <label for="nombreUser">Nombre Usuario</label>
             <input class="input" type="text" name="nombreUser" placeholder="&#128100;Nombre" required>
             
