@@ -21,7 +21,7 @@
           <div>
                 <h2>Datos de Registro</h2>
           </div>
-            <form action="PagePerfilNuevo.jsp" method="POST">
+            <form action="RegistroNuevoUsuario" method="POST">
             <label for="nombreUser">Nombre Usuario</label>
             <input class="input" type="text" name="nombreUser" placeholder="&#128100;Nombre" required>
             
@@ -33,9 +33,9 @@
             <label for="tipoUsuario">Tipo de Usuario</label>
             
             <div class="radio" name="tipoUser">
-                <input type="radio" name="tipoUser" value="Suscriptor" id="Suscriptor">
+                <input type="radio" name="tipoUser" value="Suscriptor" id="Suscriptor" required>
                 <label for="Suscriptor">Suscriptor</label>
-                <input type="radio" name="tipoUser" value="Editor" id="Editor">
+                <input type="radio" name="tipoUser" value="Editor" id="Editor" required>
                 <label for="Editor">Editor</label>
             </div>
             <input type="submit" value="Registrarse">
