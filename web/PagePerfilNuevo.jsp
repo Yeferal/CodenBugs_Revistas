@@ -20,7 +20,7 @@
         
         <% 
                 String nombre=request.getParameter("nombreUser");
-                String tipo=request.getParameter("passwrd1");
+                String tipo=request.getParameter("tipoUser");
             %>
             
             <% 
@@ -43,24 +43,24 @@
           <h2>Tipo: <%=tipo%> </h2>
       </div>
       <div class="dataDescript">
-            <form action="">
+            <form action="ActualizarUsuario" method="POST">
                     <label for="areaGustos">Gustos</label>
-                    <textarea id="areaGustos" name="textarea" rows="10" cols="50" placeholder="Escribe tu Gustos"></textarea>
+                    <textarea id="areaGustos" name="textareaGustos" rows="10" cols="50" placeholder="Escribe tu Gustos"></textarea>
                     <br>
                     <label for="areaHobbies">Hobbies</label>
-                    <textarea id="areaHobbies" name="textarea" rows="10" cols="50" placeholder="Escribe tus Hobbies"></textarea>
+                    <textarea id="areaHobbies" name="textareaHobi" rows="10" cols="50" placeholder="Escribe tus Hobbies"></textarea>
                     <br>
                     <label for="areaIntereses">Intereses</label>
         
                     <div class="seleciones">
                         <label for="">Gustos</label>
-                        <input type="checkbox" id="1"><br>
-                    <textarea id="areaIntereses" name="textarea" rows="10" cols="50" placeholder="Escribe tus Intereses"></textarea><br>
+                        <input type="checkbox"  id="1"><br>
+                    <textarea id="areaIntereses" name="textareaInteres" rows="10" cols="50" placeholder="Escribe tus Intereses"></textarea><br>
                     </div>
         
                     <br>
                     <label for="areaDescripcion">Descripcion o Biografia</label>
-                    <textarea id="areaDescripcion" name="textarea" rows="10" cols="50" placeholder="Escribe tu Descripcion"></textarea><br>
+                    <textarea id="areaDescripcion" name="textareaBio" rows="10" cols="50" placeholder="Escribe tu Descripcion"></textarea><br>
         
                     <input type="submit" value="Actualizar Datos">
               </form>

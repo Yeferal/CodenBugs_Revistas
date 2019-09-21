@@ -13,7 +13,7 @@ public class Usuario {
     private String foto;
     
     
-    public Usuario(String nombre, String contrasenia, String tipoUsuario){
+    public void setDatosPrincipales(String nombre, String contrasenia, String tipoUsuario){
         this.nombre=nombre;
         this.contrasenia=contrasenia;
         this.tipoUsuario=tipoUsuario;
