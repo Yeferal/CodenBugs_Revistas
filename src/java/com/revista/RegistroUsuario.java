@@ -71,19 +71,7 @@ public class RegistroUsuario extends Conexion{
         return false;
     }
     
-    public boolean verificarPassword(String nombreUsuario,String passwrdUsuario){
-        
-        try {
-            stmt = conect.createStatement();
-            resultado = stmt.executeQuery("SELECT password_usuario FROM usuario WHERE nombre='"+nombreUsuario+"';");
-            //resultado.next();
-            System.out.println(resultado.next());
-            
-        } catch (SQLException ex) {
-            
-        }
-        return true;
-    }
+    
     
     public boolean  verificarExistenciaUsuario(String nombreUsuario){
         try {
@@ -101,17 +89,7 @@ public class RegistroUsuario extends Conexion{
         
         return true;
     }
-    public boolean  verificarExistenciaAdministrador(String nombreUsuario){
-        try {
-            stmt = conect.createStatement();
-            resultado = stmt.executeQuery("SELECT nombre FROM administrador WHERE nombre='"+nombreUsuario+"';");
-            return resultado.next();
-        } catch (Exception e) {
-        }
-        
-        
-        return true;
-    }
+
     
     
     public String mostrarUltimoUsuarioId(){
@@ -124,17 +102,6 @@ public class RegistroUsuario extends Conexion{
             e.printStackTrace();
         }
         return "0";
-    }
-    
-    private boolean isExisteUsuario(String nombre, String pass, String tipo){
-        if(verificarExistenciaAdministrador(nombre)){
-            
-        }else if(verificarExistenciaUsuario(nombre)){
-            insertarUsuario(nombre, pass , tipo);
-            return true;
-        }
-        
-        return false;
     }
     
     

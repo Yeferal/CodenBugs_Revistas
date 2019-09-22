@@ -1,6 +1,8 @@
 
 package com.revista;
 
+import java.io.InputStream;
+
 public class Usuario {
     
     private String nombre;
@@ -10,7 +12,7 @@ public class Usuario {
     private String hobbies;
     private String intereses;
     private String descripcion;
-    private String foto;
+    private InputStream foto;
     
     
     public void setDatosPrincipales(String nombre, String contrasenia, String tipoUsuario){
@@ -40,7 +42,9 @@ public class Usuario {
     public void setDescripcion(String descripcion){
         this.descripcion = descripcion;
     }
-    
+    public void setFoto(InputStream archivo){
+        foto = archivo;
+    }
     
     
     public String getNombre(){
@@ -65,7 +69,9 @@ public class Usuario {
         return descripcion;
     }
     
-    
+    public InputStream getFoto(){
+        return foto;
+    }
     
     
 }

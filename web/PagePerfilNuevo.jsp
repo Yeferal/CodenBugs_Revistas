@@ -29,11 +29,17 @@
                  
         <div class="foto">
             <div class="fotoPerfil">
-
-        
+                  <img src="img/perfilVacio.jpg" >
+                  
             </div>
-            <button type="button" class="botonSubir">Subir Foto</button>
-      </div>
+            Subir Foto
+            <form action="RegistroImagen" method="POST" enctype="multipart/form-data">
+                  <input type="file" name="fichero" value="Selecionar" id="btn" class="btn" />
+                  <br>
+                  <input type="submit" value="Enviar Archivo" name="submit" id="btn" class="btn"/>
+            </form>
+            
+        </div>
       <div class="dataBasic">
           
             

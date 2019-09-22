@@ -22,13 +22,13 @@
         %>
         <div class="login-box">
             <h1>Inicio</h1>
-            <form action="">
+            <form action="IniciarSesion" method="POST">
                 <!-- USERNAME INPUT -->
                 <label for="username">Nombre Usuario</label>
-                <input type="text" placeholder="Ingresar Nombre" required>
+                <input type="text" name="nombre" placeholder="Ingresar Nombre" required>
                 <!-- PASSWORD INPUT -->
                 <label for="password">Constraseña</label>
-                <input type="password" placeholder="Ingresar Constraseña" required>
+                <input type="password" name="passwrd" placeholder="Ingresar Constraseña" required>
                 <input type="submit" value="Iniciar Sesion">
                 <br>
                 <a href="PageNewAccout.jsp">¿No tienes una cuenta?</a>
