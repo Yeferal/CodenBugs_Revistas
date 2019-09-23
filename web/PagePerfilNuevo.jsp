@@ -5,8 +5,9 @@
 --%>
 
 <%@page import="com.revista.Conexion"%>
+<%@page import="com.revista.BuscaImagenPerfil"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id= "usuario" class="com.revista.Conexion"></jsp:useBean>
+<jsp:useBean id= "usuario" class="com.revista.SesionUsuario"></jsp:useBean>
 <jsp:setProperty name="usuario" property="*" ></jsp:setProperty>
 <!DOCTYPE html>
 <html>
@@ -19,17 +20,15 @@
     <body>
         
         <% 
-                String nombre=request.getParameter("nombreUser");
-                String tipo=request.getParameter("tipoUser");
+                String nombre=usuario.usuario.getNombre();
+                String tipo=usuario.usuario.getTipoUsuario();
             %>
             
-            <% 
-                //usuario.insertarUsuario(nombre, "123456", tipo);
-                 %>
+            <% BuscaImagenPerfil perfil = new BuscaImagenPerfil();%>
                  
         <div class="foto">
             <div class="fotoPerfil">
-                  <img src="img/perfilVacio.jpg" >
+                <img src="<%=perfil.buscarNombreImagen()%>" >
                   
             </div>
             Subir Foto

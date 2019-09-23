@@ -5,12 +5,17 @@
  */
 package com.servetl;
 
+import com.revista.BuscaImagenPerfil;
 import com.revista.GuardarImagen;
 import com.revista.SesionUsuario;
 import com.revista.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -58,7 +63,15 @@ public class RegistroImagen extends HttpServlet {
         }
         
         guardar.desconectar();
-        
+        BuscaImagenPerfil buss = new BuscaImagenPerfil();
+        try {
+            buss.escribirFoto();
+        } catch (SQLException exs) {
+            exs.printStackTrace();
+            System.out.println("Noooooooooooooooooo");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PagePerfilNuevo.jsp");
+            dispatcher.forward(request, response);
     }
 
 
