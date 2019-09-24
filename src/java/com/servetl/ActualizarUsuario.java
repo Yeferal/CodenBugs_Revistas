@@ -21,12 +21,17 @@ public class ActualizarUsuario extends HttpServlet {
     SesionUsuario userSetion = new SesionUsuario();
     
     public ActualizarUsuario(){
-        this.usuario = userSetion.usuario;
+//        this.usuario = userSetion.usuario;
+          
+          
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         con.conectar();
+        
+        
+        
         System.out.println(usuario.getNombre()+" "+usuario.getTipoUsuario());
         
         usuario.setGustos(request.getParameter("textareaGustos"));

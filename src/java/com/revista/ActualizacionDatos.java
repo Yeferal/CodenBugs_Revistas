@@ -1,17 +1,23 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.revista;
 
 import java.sql.SQLException;
 
-public final class SesionUsuario extends Conexion{
+
+public class ActualizacionDatos extends Conexion{
  
-    public static Usuario usuario = new Usuario();
-    
-    public SesionUsuario(){
-        
+    Usuario usuario = new Usuario();
+    SesionUsuario sesion = new SesionUsuario();
+    public ActualizacionDatos(){
+        sesion.usuario = usuario;
     }
-    public void setInformacion(String nombre){
-        conectar();
+    
+    
+    private void setInformacion(String nombre){
         try {
             stmt = conect.createStatement();
             resultado = stmt.executeQuery("SELECT * FROM perfil WHERE nombre='"+nombre+"';");
@@ -24,6 +30,6 @@ public final class SesionUsuario extends Conexion{
         } catch (SQLException ex) {
             
         }
-        desconectar();
     }
+    
 }

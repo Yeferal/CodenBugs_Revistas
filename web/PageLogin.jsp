@@ -7,6 +7,7 @@
 <%@page import="com.revista.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.revista.*" %>
+<jsp:useBean id= "usuariosSesion" class="com.revista.SesionUsuario"></jsp:useBean>
 <jsp:useBean id= "usuarios" class="com.revista.Usuario"></jsp:useBean>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Code n' Bugs</title>
         <link rel="stylesheet" href="css/stilo.css">
-        
+    
+        <% session.setAttribute("Usuario", ""); %>
     </head>
     <body>
     <%
@@ -32,6 +34,7 @@
                 <input type="submit" value="Iniciar Sesion">
                 <br>
                 <a href="PageNewAccout.jsp">¿No tienes una cuenta?</a>
+                
             </form>
         </div>
     </body>

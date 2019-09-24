@@ -19,7 +19,7 @@
     </head>
     <body>
         
-        <% 
+            <% 
                 String nombre=usuario.usuario.getNombre();
                 String tipo=usuario.usuario.getTipoUsuario();
             %>
@@ -28,7 +28,7 @@
                  
         <div class="foto">
             <div class="fotoPerfil">
-                <img src="<%=perfil.buscarNombreImagen()%>" >
+                <img src="" >
                   
             </div>
             Subir Foto

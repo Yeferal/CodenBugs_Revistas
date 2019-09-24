@@ -1,0 +1,35 @@
+
+
+.nuevaRevista{
+   background: #0087c5;
+   width:600px;
+   height:600px;
+   /*text-align: center;*/
+   margin: auto;
+   padding: 5px 5px 30px 5px;
+   border-top: 35px solid #0087c5;
+   border-right: 35px solid #0087c5;
+   border-left: 35px solid #0087c5;
+   border-radius: 6px;
+}
+
+.nuevaR{
+    width: 320px;
+    height: 35px;
+    border-radius: 6px;
+    font-family: verdana;
+    font-weight: 900;
+}
+.btn1{
+    width: 324px;
+    height: 45px;
+    border-radius: 6px;
+    background: #00fcbd;
+    color: #ffffff;
+    font-size: 15px;
+}
+p{
+    font-size: 30px;
+    font-family: cursive;
+}
+

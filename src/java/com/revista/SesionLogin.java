@@ -9,12 +9,17 @@ import java.util.logging.Logger;
 public class SesionLogin extends Conexion{
  
     Usuario usuario = new Usuario();
+    SesionUsuario sesion = new SesionUsuario();
+    
+    public SesionLogin(){
+        sesion.usuario = this.usuario;
+    }
     
     public boolean buscarUsuario(String Nombre, String pass){
         if(verificarExistenciaAdministrador(Nombre)){
             if(verificarPassword(Nombre, pass, "administrador")){
                 //Usuario admin
-                usuario.setDatosPrincipales(Nombre, pass, "Administrado");
+                usuario.setDatosPrincipales(Nombre, pass, "Administrador");
                 return true;
             }else{
                 return false;
@@ -25,6 +30,7 @@ public class SesionLogin extends Conexion{
             if(verificarPassword(Nombre, pass, "usuario")){
                 //Usuario usuario
                 usuario.setDatosPrincipales(Nombre, pass, getTipoUsuario(Nombre));
+                setInformacion(Nombre);
                 return true;
             }else{
                 //no es la contrasenia
@@ -65,17 +71,6 @@ public class SesionLogin extends Conexion{
     }
     
     
-    private boolean isExisteUsuario(String nombre, String pass, String tipo){
-        if(verificarExistenciaAdministrador(nombre)){
-            
-        }else if(verificarExistenciaUsuario(nombre)){
-
-            return true;
-        }
-        
-        return false;
-    }
-    
     public boolean verificarPassword(String nombreUsuario,String passwrdUsuario, String tipoUsuario){
         
         try {
@@ -106,4 +101,21 @@ public class SesionLogin extends Conexion{
         }
         return "";
     }
+    
+    private void setInformacion(String nombre){
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery("SELECT * FROM perfil WHERE nombre='"+nombre+"';");
+            resultado.next();
+            
+            usuario.setGustos(resultado.getString(4));
+            usuario.setHobbies(resultado.getString(6));
+            usuario.setIntereses(resultado.getString(7));
+            usuario.setDescripcion(resultado.getString(8));
+        } catch (SQLException ex) {
+            
+        }
+    }
+    
+    
 }

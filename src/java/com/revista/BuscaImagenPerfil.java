@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -25,44 +26,38 @@ public class BuscaImagenPerfil extends Conexion{
      * de lo contrario retorna el nombre de la foto sin perfil
      * @return 
      */
-    public String buscarNombreImagen(){
-        
-        if(usuario.getFoto()!=null){
-            
-            return "perfil"+usuario.getNombre()+".png";
-        }
-        
-       return "css/img/perfilVacio.jpg";
-    }
     
     /**Busca la foto de perfil en la base de datos
      * luego lo comvierte en bytes y estos son agregados al buffer
      * y pot ultimo son escritos en una ruta con el nombre de usuario del perfil
      * @throws SQLException 
      */
-    public void escribirFoto() throws SQLException{
+    public byte[] escribirFoto() throws SQLException{
+        byte[] data = null;
         conectar();
         stmt = conect.createStatement();
         resultado = stmt.executeQuery("SELECT foto FROM perfil WHERE nombre='"+usuario.getNombre()+"';");
         
-        BufferedImage foto = null;
 
         try {
             resultado.next();
-            Blob blob = resultado.getBlob(1);
-            
-            byte[] data = blob.getBytes(1, (int)blob.length());
-            
-            foto = ImageIO.read(new ByteArrayInputStream(data));
-            File archivo = new File("perfil"+usuario.getNombre()+".png");
-            
-            ImageIO.write(foto, "png", archivo);
+
+            if(resultado.getBlob(1)!=null){
+                Blob blob = resultado.getBlob(1);
+
+            data = blob.getBytes(1, (int)blob.length());
+            }
+
             System.out.println("SI se guardo");
-        } catch (IOException ex) {
+        } catch (SQLException ex) {
             System.out.println("No se guardo");
             ex.printStackTrace();
+        }catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("No se guardo 2");
         }
         desconectar();
+        return data;
     }
     
 }
