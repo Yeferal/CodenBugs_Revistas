@@ -45,5 +45,22 @@ public class Revista {
             comentar = false;
         }
     }
+    public void setID(int id){
+        this.id = id;
+        
+    }
+    
+    public int getID(){
+       return id;
+    }
+    public String getAutor(){
+        return autor;
+    }
+    public String getTitulo(){
+        return titulo;
+    }
+    public String getDescripcion(){
+        return descripcion;
+    }
 
 }

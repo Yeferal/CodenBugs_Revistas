@@ -18,7 +18,7 @@
         <%@include file="NavegarcionEditor.html" %>
         <div class="nuevaRevista">
             <p>Publicar Nueva Revista</p>
-            <form action="" method="POST">
+            <form action="RegistroNuevaRevista" method="POST" enctype="multipart/form-data">
                 <label for="tituloRevista">Titulo</label><br>
                 <input type="text" class="nuevaR" name="tituloRevista" id="tituloRevista" required><br>
 

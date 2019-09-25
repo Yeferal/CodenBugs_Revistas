@@ -22,6 +22,15 @@
     <%
         
         %>
+        
+        <c:if test="${requestScope['error'] != null}">
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#InfoModal').modal('show');
+                });
+            </script>
+        </c:if>
+        
         <div class="login-box">
             <h1>Inicio</h1>
             <form action="IniciarSesion" method="POST">
