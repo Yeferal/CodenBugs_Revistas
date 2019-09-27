@@ -3,7 +3,7 @@
     Created on : 16/09/2019, 10:47:41 PM
     Author     : yefer
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.revista.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.revista.*" %>
@@ -25,9 +25,7 @@
         
         <c:if test="${requestScope['error'] != null}">
             <script type="text/javascript">
-                $(document).ready(function () {
-                    $('#InfoModal').modal('show');
-                });
+                alert("Contraseña o Usuario INCORRECTOS");
             </script>
         </c:if>
         

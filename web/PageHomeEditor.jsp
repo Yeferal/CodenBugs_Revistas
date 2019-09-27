@@ -1,5 +1,6 @@
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.revista.Revista"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.revista.ListaRevistaEditor"%>
@@ -13,10 +14,12 @@
     </head>
     <body>
             <%@include file="NavegarcionEditor.html" %>
-            <%System.out.println("HOla: "+session.getAttribute("Usuario").toString());
-                    
-            %>
+            
             <div> 
+                <!--<img src="HomeResultado"/>-->
+                <form action="HomeResultado" method="GET">
+                    <input type="submit" value="Actualizar"/>
+                </form>
             </div>
             <div>
                 <table>
@@ -28,22 +31,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                                <%
-                                    ListaRevistaEditor listaRevistas;
-                                    listaRevistas = new ListaRevistaEditor(session.getAttribute("Usuario").toString());
-                                    
-                                    ArrayList<Revista> dato = (ArrayList<Revista>) listaRevistas.listarRevistas();
-                                    System.out.print(dato.isEmpty());
-                                for (int i = 0; i < dato.size(); i++) {
-                                        out.println("<tr>");
-                                        out.println("<td>"+(i+1)+"</td>");
-                                        out.println("<td><a href=\"VerRevista?id="+dato.get(i).getID()+"\" target=\"_blank\">"+dato.get(i).getTitulo()+"</a></td>");
-                                        out.println("<td>"+dato.get(i).getDescripcion()+"</td>");
-                                    }
-                                %>
+                        <%int numero = 0;%>
+                        <c:forEach var="dato" items="${lista}">
+                            <%numero++;%>
+                            
+                            <tr>
+                                <%--<c:out value="${dato}"></c:out>--%>
                                 
-                            
-                            
+                            <td><%=numero%></td>
+                            <td><a href="VerRevista?id=${dato.getID()}">${dato.getTitulo()}</a></td>
+                            <td>${dato.getDescripcion()}</td>
+                            </tr>
+                        </c:forEach>
+     
                         
                     </tbody>
                     
