@@ -36,7 +36,6 @@ public class ImagenEncuentra extends HttpServlet {
         sesion.setInformacion(SesionUsuario.usuario.getNombre());
         
         //usuario = sesion.usuario;
-        System.out.println("NOmbre: "+sesion.usuario.getNombre());
         
         BuscaImagenPerfil imgFoto = new BuscaImagenPerfil();
         try {

@@ -68,9 +68,8 @@ public class RegistroImagen extends HttpServlet {
             buss.escribirFoto();
         } catch (SQLException exs) {
             exs.printStackTrace();
-            System.out.println("Noooooooooooooooooo");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("PagePerfilNuevo.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("page-perfil-nuevo.jsp");
             dispatcher.forward(request, response);
     }
 

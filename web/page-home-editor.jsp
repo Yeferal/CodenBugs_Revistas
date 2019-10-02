@@ -13,13 +13,20 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-            <%@include file="NavegarcionEditor.html" %>
+            <%@include file="navegacion-editor.html" %>
             
             <div> 
                 <!--<img src="HomeResultado"/>-->
                 <form action="HomeResultado" method="GET">
                     <input type="submit" value="Actualizar"/>
                 </form>
+                <div class="contenedorBuscar">
+                    <form action="BuscarRevistaEditor" method="GET">
+                    <input type="text" name="cajaBuscar" class="buscar"/>
+                    <input type="submit" value="Buscar" name="botonBuscar"/>
+                </form>
+                </div>
+                
             </div>
             <div>
                 <table>
@@ -39,7 +46,7 @@
                                 <%--<c:out value="${dato}"></c:out>--%>
                                 
                             <td><%=numero%></td>
-                            <td><a href="VerRevista?id=${dato.getID()}">${dato.getTitulo()}</a></td>
+                            <td><a href="VerRevista?id=${dato.getID()}" target="_Blank">${dato.getTitulo()}</a></td>
                             <td>${dato.getDescripcion()}</td>
                             </tr>
                         </c:forEach>

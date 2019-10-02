@@ -45,6 +45,12 @@ public class Usuario {
     public void setFoto(InputStream archivo){
         foto = archivo;
     }
+    public void setInformacionaExtra(String gustos,String hobbies, String intereses, String descripcion){
+        this.gustos = gustos;
+        this.hobbies = hobbies;
+        this.intereses = intereses;
+        this.descripcion = descripcion;
+    }
     
     
     public String getNombre(){

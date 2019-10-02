@@ -7,6 +7,7 @@ import java.sql.SQLException;
 public class ListaCategorias extends Conexion{
     
     String cadenaHTML;
+    String cadenaTags;
     
     public ListaCategorias(){
         cadenaHTML = "";
@@ -16,6 +17,10 @@ public class ListaCategorias extends Conexion{
         
         genearaCadena();
         return cadenaHTML;
+    }
+    public String getEtiquetas(){
+        generarCadenaTags();
+        return cadenaTags;
     }
     
     private void genearaCadena(){
@@ -35,5 +40,27 @@ public class ListaCategorias extends Conexion{
             desconectar();
         } catch (SQLException e) {
         }
+    }
+    
+    private String generarCadenaTags(){
+        conectar();
+        cadenaTags = "<select name=\"tags\" id=\"tags\">\n";
+        
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery("SELECT * FROM tags_revista;");
+            
+            while (resultado.next()) {                
+                cadenaTags+= "<option>";
+                cadenaTags+= resultado.getString(2);
+                cadenaTags+= "</option>\n";
+            }
+            cadenaTags += "</select>";
+            
+            desconectar();
+        } catch (SQLException e) {
+            
+        }
+        return cadenaTags;
     }
 }

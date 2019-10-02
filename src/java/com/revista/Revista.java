@@ -8,7 +8,7 @@ public class Revista {
     
     
     private int id, numeroMeGUstas,ganacias, costoPorDia, cuotaSuscripcion, numeroSuscriptores;
-    private String titulo, descripcion,autor,fecha, categoria;
+    private String titulo, descripcion,autor,fecha, categoria, etiqueta;
     private boolean likes,comentar,gratis;
     private InputStream pdf;
     
@@ -49,6 +49,16 @@ public class Revista {
         this.id = id;
         
     }
+    public void setCostoPorDia(int costoPorDia){
+        this.costoPorDia = costoPorDia;
+    }
+    public void setCuotaSuscripcion(int cuotaSuscripcion){
+        this.cuotaSuscripcion = cuotaSuscripcion;
+    }
+    public void setTags(String etiqueta){
+        this.etiqueta = etiqueta;
+    }
+    
     
     public int getID(){
        return id;
@@ -61,6 +71,21 @@ public class Revista {
     }
     public String getDescripcion(){
         return descripcion;
+    }
+    public String getFecha(){
+        return fecha;
+    }
+    public String getCategoria(){
+        return categoria;
+    }
+    public int getCuotaSuscripcion(){
+        return cuotaSuscripcion;
+    }
+    public int getCostoDia(){
+        return costoPorDia;
+    }
+    public String getTags(){
+        return etiqueta;
     }
 
 }

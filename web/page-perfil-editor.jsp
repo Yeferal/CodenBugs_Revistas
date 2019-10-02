@@ -25,7 +25,7 @@
            String nombre=usuario.usuario.getNombre();
            String tipo=usuario.usuario.getTipoUsuario();
         %>
-        <%@include file="NavegarcionEditor.html" %>
+        <%@include file="navegacion-editor.html" %>
         <%--<%=perfil.buscarNombreImagen()%>--%>
         <div class="contenedorPerfil">
             <div>

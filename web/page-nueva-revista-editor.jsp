@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/stiloFomRevista.css">
     </head>
     <body>
-        <%@include file="NavegarcionEditor.html" %>
+        <%@include file="navegacion-editor.html" %>
         <div class="nuevaRevista">
             <p>Publicar Nueva Revista</p>
             <form action="RegistroNuevaRevista" method="POST" enctype="multipart/form-data">

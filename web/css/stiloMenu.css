@@ -85,3 +85,7 @@ tr:hover{
     background: #369681;
     color: white;
 }
+
+.contenedorBuscar{
+    text-align: right;
+}

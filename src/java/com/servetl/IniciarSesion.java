@@ -32,34 +32,35 @@ public class IniciarSesion extends HttpServlet {
         if(con.buscarUsuario(request.getParameter("nombre"), request.getParameter("passwrd"))){
             HttpSession sesionUser = request.getSession(true);
             String nombre = sesion.usuario.getNombre();
+            
             sesionUser.setAttribute("Usuario",nombre );
             Usuario usuario = new Usuario();
             usuario.setNombre(sesionUser.getAttribute("Usuario").toString());
-            System.out.println("NOmbresssssssss: "+usuario.getNombre());
             con.desconectar();
             
             RequestDispatcher dispatcher = request.getRequestDispatcher(encontrartipoPagina());
             dispatcher.forward(request, response);
         }else{
             con.desconectar();
-            //PrintWriter out;
-             ServletOutputStream stream1 = response.getOutputStream();
-             stream1.print("<html><head></head><body onload=\"alert('Contraseña o Usuario INCORRECTOS'); window.location='PageLogin.jsp' \"></body></html>");
-             stream1.close();
 
-            //RequestDispatcher dispatcher = request.getRequestDispatcher("PageLogin.jsp");
-            //dispatcher.forward(request, response);
+
+            request.setAttribute("error", true);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("page-login.jsp");
+            dispatcher.forward(request, response);
+            
             
         }
+        con.desconectar();
         
     }
     
     
     private String encontrartipoPagina(){
         if(sesion.usuario.getTipoUsuario().equals("Administrador")){
-            return "";
+            return "RecientesAdministrador";
         }else if(sesion.usuario.getTipoUsuario().equals("Editor")){
-            return "PageHomeEditor.jsp";
+            return "HomeResultado";
+            //return "PageHomeEditor.jsp";
         }else{
             
         }

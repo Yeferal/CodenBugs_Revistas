@@ -9,6 +9,6 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="NavegarcionEditor.html" %>
+        <%@include file="navegacion-editor.html" %>
     </body>
 </html>

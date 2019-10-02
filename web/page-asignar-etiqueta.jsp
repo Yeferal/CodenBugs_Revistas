@@ -1,6 +1,6 @@
 <%-- 
-    Document   : PageReporteAdministrador
-    Created on : 27/09/2019, 01:10:46 AM
+    Document   : PageAsignarEtiqueta
+    Created on : 27/09/2019, 01:10:15 AM
     Author     : yefer
 --%>
 
@@ -13,6 +13,6 @@
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="NavegacionAdministrador.html" %>
+        <%@include file="navegacion-administrador.html" %>
     </body>
 </html>

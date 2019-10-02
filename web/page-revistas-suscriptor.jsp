@@ -1,6 +1,6 @@
 <%-- 
-    Document   : PageAsignarEtiqueta
-    Created on : 27/09/2019, 01:10:15 AM
+    Document   : page-revistas-suscriptor
+    Created on : 1/10/2019, 12:11:25 AM
     Author     : yefer
 --%>
 
@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Code n' Bugs</title>
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="NavegacionAdministrador.html" %>
+        <%@include file="navegacion-suscriptor.html" %>
     </body>
 </html>

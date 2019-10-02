@@ -21,6 +21,27 @@ public class Conexion {
     private String password = "123456";
     private String servidor = "jdbc:mysql://localhost:3306/codenbugs_revistas";
     
+    final String INSERT = "INSERT INTO ";
+    final String INTO = "INTO ";
+    final String VALUES = "VALUES ";
+    final String UPDATE = "UPDATE ";
+    final String SELECT = "SELECT ";
+    final String FROM = "FROM ";
+    final String WHERE ="WHERE ";
+    final String SET = "SET ";
+    
+    final String administradro = "administrador ";
+    final String categoriaRevista = "categoria_revista ";
+    final String categorias = "categorias ";
+    final String comentarios = "comentarios ";
+    final String etiquetas = "etiquetas ";
+    final String meGusta = "me_gusta ";
+    final String perfil = "perfil ";
+    final String registro = "registro ";
+    final String revista = "revista ";
+    final String suscripciones = "suscripciones ";
+    final String tagsRevista = "tags_revista ";
+    final String usuarioTabla = "usuario ";
     
     public Conexion(){
         

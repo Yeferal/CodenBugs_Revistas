@@ -44,19 +44,15 @@ public class VerRevista extends HttpServlet {
         try {
 
             int id = Integer.parseInt(request.getParameter("id"));
-            System.out.println("\nid: "+id);
             ps = con.conect.createStatement();
             rs = ps.executeQuery("SELECT pdf FROM revista WHERE id_revista="+id+";");
-            System.out.println("bbbbbb");
             while (rs.next()) {
                 b = rs.getBytes(1);
-                System.out.println("bbbbbb"+b);
             }
             InputStream bos = new ByteArrayInputStream(b);
 
             int tamanoInput = bos.available();
             byte[] datosPDF = new byte[tamanoInput];
-            System.out.println("bytes: "+tamanoInput);
             bos.read(datosPDF, 0, tamanoInput);
 
             response.getOutputStream().write(datosPDF);
@@ -76,8 +72,6 @@ public class VerRevista extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
         processRequest(request, response);
     }
 

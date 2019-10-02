@@ -32,17 +32,17 @@ public class RegistroNuevoUsuario extends HttpServlet {
                 
                 con.insertarUsuario(request.getParameter("nombreUser"), request.getParameter("passwrd1"), request.getParameter("tipoUser"));
                 con.desconectar();
-                RequestDispatcher dispatcher = request.getRequestDispatcher("PagePerfilNuevo.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("page-perfil-nuevo.jsp");
                 dispatcher.forward(request, response);
                 
             }else{
-                //request.setAttribute("error", true);
-                RequestDispatcher dispatcher1 = request.getRequestDispatcher("PageNewAccout.jsp");
+                request.setAttribute("error", true);
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("page-new-accout.jsp");
                 dispatcher1.forward(request, response);
             }
         }else{
-            //request.setAttribute("error", true);
-            RequestDispatcher dispatcher2 = request.getRequestDispatcher("PageNewAccout.jsp");
+            request.setAttribute("error", true);
+            RequestDispatcher dispatcher2 = request.getRequestDispatcher("page-new-accout.jsp");
             dispatcher2.forward(request, response);
         }
         

@@ -1,19 +1,21 @@
-
-
+<%-- 
+    Document   : PageAsignarMontoEditor
+    Created on : 27/09/2019, 12:28:39 AM
+    Author     : yefer
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Code n' Bugs</title>
         <link rel="stylesheet" href="css/stiloMenu.css">
     </head>
     <body>
-        <%@include file="NavegacionAdministrador.html" %>
-        <div> 
-                <!--<img src="HomeResultado"/>-->
-                <form action="RecientesAdministrador" method="GET">
+        <%@include file="navegacion-administrador.html" %>
+        <div>
+        <form action="AsignaMontoPage" method="GET">
                     <input type="submit" value="Actualizar"/>
                 </form>
             </div>
@@ -33,7 +35,7 @@
                 <tbody>
                     <%int numero = 0;%>
 
-                    <c:forEach var="dato" items="${listaSinMonto}">
+                    <c:forEach var="dato" items="${listaTodos}">
                         <%numero++;%>
                         <tr>
                             <td><%=numero%></td>
@@ -43,7 +45,7 @@
                             <td>${dato.getCuotaSuscripcion()}</td>
                             <td>${dato.getCostoDia()}</td>
                             <td>
-                                <form action="#" method="GET">
+                                <form action="AsignacionCostoDia?numeroCosto=${dato.getID()}" method="POST">
                                     <input type="submit" value="Asignar"/>
                                 </form>
                             </td>
@@ -53,5 +55,6 @@
             </thead>
             </thead>
         </table>
+        
     </body>
 </html>

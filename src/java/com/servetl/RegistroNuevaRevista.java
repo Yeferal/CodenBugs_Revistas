@@ -39,11 +39,10 @@ public class RegistroNuevaRevista extends HttpServlet {
         
         registroRevsita = new RegistroRevista();
         registroRevsita.insertarRevista(request, sesion.usuario);
-        System.out.println("Cuota: "+request.getParameter("cuota"));
         
         
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("PageNuevaRevistaEditor.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("page-nueva-revista-editor.jsp");
         dispatcher.forward(request, response);
     }
 

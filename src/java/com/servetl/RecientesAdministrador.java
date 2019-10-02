@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet(name = "HomeResultado", urlPatterns = {"/HomeResultado"})
-public class HomeResultado extends HttpServlet {
+@WebServlet(name = "RecientesAdministrador", urlPatterns = {"/RecientesAdministrador"})
+public class RecientesAdministrador extends HttpServlet {
+
 
     ListaRevistaEditor listaRevistas;
     SesionUsuario sesion = new SesionUsuario();
@@ -41,15 +41,15 @@ public class HomeResultado extends HttpServlet {
         
         listaRevistas = new ListaRevistaEditor(sesion.usuario.getNombre());
         
-        listaRevistas.listarRevistas();
         
-        ArrayList<Revista> lista =(ArrayList<Revista>) listaRevistas.listarRevistas();
-        System.out.println("tamanio: "+ lista.size());
         
-        request.setAttribute("lista", lista);
-        request.getRequestDispatcher("page-home-editor.jsp").forward(request, response);
+        ArrayList<Revista> listaSinMonto =(ArrayList<Revista>) listaRevistas.listarRevistasSinMonto();
+        
+        request.setAttribute("listaSinMonto", listaSinMonto);
+        request.getRequestDispatcher("page-receintes-administrador.jsp").forward(request, response);
         
     }
+
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -57,11 +57,14 @@ public class HomeResultado extends HttpServlet {
         processRequest(request, response);
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    
+    
 
 }
