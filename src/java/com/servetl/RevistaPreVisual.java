@@ -34,6 +34,7 @@ public class RevistaPreVisual extends HttpServlet {
     SesionUsuario sesion = new SesionUsuario();
     Revista rev = new Revista();
     Suscripcion suscripcion = new Suscripcion();
+    ArrayList<Comentario> comentariosRevistas = null;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,12 +51,14 @@ public class RevistaPreVisual extends HttpServlet {
         rev = listaRevistas.setRevista(idR);
         
         suscripcion.actualizarDatosRevista(sesion.usuario.getNombre(), rev.getTitulo());
-        ArrayList<Comentario> comentariosRevista = (ArrayList<Comentario>) consulta.listarComentarios(idR);
-        System.out.println("tamanio: "+comentariosRevista.size());
+        comentariosRevistas = (ArrayList<Comentario>) consulta.listarComentarios(idR);
+        System.out.println("tamanio: "+comentariosRevistas.size());
         
         request.setAttribute("suscripcion", suscripcion);
-        request.setAttribute("comentariosRev", comentariosRevista);
+        
         request.setAttribute("revistaVista", rev);
+        
+        request.setAttribute("comentariosRev", (ArrayList<Comentario>)comentariosRevistas);
         
         request.getRequestDispatcher("page-ver-revista.jsp").forward(request, response);
         

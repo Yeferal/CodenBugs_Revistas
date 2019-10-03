@@ -1,7 +1,7 @@
 
 package com.revista;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
+
 import java.io.InputStream;
 
 public class Usuario {

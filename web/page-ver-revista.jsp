@@ -39,10 +39,11 @@
             </div>
             <div>
                 <c:if test="${requestScope['suscripcion'] != null}">
-                    <form action="" >
+                    <form action="Suscribirse?datoo=${revista.getID()}" method="post">
                         <input type="submit" value="Suscribirse"/>
                     </form>
                 </c:if>
+                
                 <c:if test="${requestScope['suscripcion'] == null}">
                     <form action="" >
                         <input type="submit" value="Desuscribirse"/>
@@ -56,11 +57,11 @@
                 <c:set var="comen" value="comentariosRev"></c:set>
                 <c:if test="${requestScope['comentariosRev.size()'] != 0}">
                     <p>Comentarios:</p>
-                    <c:forEach var="comt" items="comentariosRev">
-                        ${comt.getUsuario()}
-                        Susucriptor: ${comt.getUsuario()} -------Fecha: ${comt.getFecha()}
+                    <c:forEach var="dato" items="${comentariosRev}">
+                        ${dato.getUsuario()}
+                        Susucriptor: ${dato.usuario} -------Fecha: ${dato.fecha}
                         <div class="cajaComentario">
-                            ${comt.getComentario()}
+                            ${dato.comentario}
                         </div>
                         <br>
                     </c:forEach>

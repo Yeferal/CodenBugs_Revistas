@@ -6,7 +6,7 @@ public class Comentario extends Conexion{
     
     
     private String cadenHtml;
-    private String usuario,fecha,comentario;
+    String usuario,fecha,comentario;
     
     
     public void setUsuario(String usuario){

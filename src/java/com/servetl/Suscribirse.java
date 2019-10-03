@@ -9,6 +9,7 @@ import com.revista.Comentario;
 import com.revista.ComentarioSuscriptor;
 import com.revista.ConsultaSuscriptor;
 import com.revista.ListaRevistaEditor;
+import com.revista.RegistroSuscripcion;
 import com.revista.Revista;
 import com.revista.SesionUsuario;
 import com.revista.Suscripcion;
@@ -25,10 +26,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author yefer
  */
-@WebServlet(name = "Comentar", urlPatterns = {"/Comentar"})
-public class Comentar extends HttpServlet {
+@WebServlet(name = "Suscribirse", urlPatterns = {"/Suscribirse"})
+public class Suscribirse extends HttpServlet {
 
-    
     ListaRevistaEditor listaRevistas;
     ConsultaSuscriptor consulta = new ConsultaSuscriptor();
     SesionUsuario sesion = new SesionUsuario();
@@ -36,31 +36,47 @@ public class Comentar extends HttpServlet {
     Suscripcion suscripcion = new Suscripcion();
     ComentarioSuscriptor comentarioSus= new ComentarioSuscriptor();
     Comentario come = new Comentario();
-   
+    RegistroSuscripcion registro = new RegistroSuscripcion();
+    
+        
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         
+        
+        
+                
+    }
+
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idR = Integer.parseInt(request.getParameter("idRevistaComentar"));
-        System.out.println("id: "+idR);
+        
+        System.out.println("ver: "+request.getParameter("datoo")); 
+        
+        int idR = Integer.parseInt(request.getParameter("datoo"));
+        
+        
         HttpSession sesionUser = request.getSession();
         
         SesionUsuario.usuario.setNombre(sesionUser.getAttribute("Usuario").toString());
         
         sesion.setInformacion(SesionUsuario.usuario.getNombre());
-        
         listaRevistas = new ListaRevistaEditor(sesion.usuario.getNombre());
         
+        System.out.println("id: "+idR);
         rev = listaRevistas.setRevista(idR);
-        come.setComentario(request.getParameter("nuevoComentario"));
+        
+        request.setAttribute("revistaCon", rev);
+        request.setAttribute("suscriptorUsuario", sesion.usuario);
         
         
-        comentarioSus.insertaComentario(sesion.usuario,come, rev);
         
-        request.getRequestDispatcher("page-ver-revista.jsp").forward(request, response);
-        
+        //request.setAttribute("listaNosuscritas", listaNosuscritas);
+        request.getRequestDispatcher("page-pago.jsp").forward(request, response);
     }
 
-    
+
 
 }
