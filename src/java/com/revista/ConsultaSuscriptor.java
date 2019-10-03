@@ -29,7 +29,7 @@ public class ConsultaSuscriptor extends Conexion{
             while (resultado.next()) {                
                 Revista rev = new Revista();
             rev.setDatosPrincipales(resultado.getString(2),resultado.getString(3) , resultado.getString(4), resultado.getString(5), resultado.getString(6), resultado.getBinaryStream(7));
-            rev.setID(1);
+            rev.setID(resultado.getInt(1));
             lista.add(rev);
             
             }
@@ -41,6 +41,35 @@ public class ConsultaSuscriptor extends Conexion{
         }
         
         return lista;
+    }
+    
+    
+    public List listarComentarios(int idRevista){
+        List<Comentario> lista = new ArrayList<>();
+        
+        conectar();
+        
+        try {
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+comentarios+WHERE+"id_revista="+idRevista+";");
+            while (resultado.next()) {                
+                Comentario comentario = new Comentario();
+                comentario.setUsuario(resultado.getString(3));
+                comentario.setFecha(resultado.getString(7));
+                comentario.setComentario(resultado.getString(6));
+                System.out.println(comentario.getUsuario());
+            lista.add(comentario);
+            
+            }
+            desconectar();
+            
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return lista;
+        
     }
     
 }

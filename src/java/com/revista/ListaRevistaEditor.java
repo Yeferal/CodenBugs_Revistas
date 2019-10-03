@@ -95,6 +95,7 @@ public class ListaRevistaEditor extends Conexion{
     
     public List listarRevistasBuscada(String nombre){
         List<Revista> lista = new ArrayList<>();
+        Revista revista = null;
         conectar();
         
         try {
@@ -110,7 +111,7 @@ public class ListaRevistaEditor extends Conexion{
                 }
                 
                 
-                Revista revista = new Revista();
+                revista = new Revista();
                 
                 
                 revista.setDatosPrincipales(resultado.getString(2), resultado.getString(3), resultado.getString(4), categoriasLista,resultado.getString(14) , resultado.getBinaryStream(10));
@@ -158,7 +159,12 @@ public class ListaRevistaEditor extends Conexion{
             revistaR.setCuotaSuscripcion(resultado.getInt(12));
             revistaR.setTags(etiquetas);
             
+            revistaR.setComentar(resultado.getInt(7));
+            revistaR.setLikes(resultado.getInt(8));
+            revistaR.setGratis(resultado.getInt(11));
+            
             desconectar();
+            
             return revistaR;
         } catch (SQLException ex) {
 

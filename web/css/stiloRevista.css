@@ -1,0 +1,32 @@
+
+.contenedorVerRevista{
+    background: #FFFFFF;
+    align-content: center;
+    margin: auto;
+   padding: 5px 5px 30px 5px;
+   border-top: 35px solid #0087c5;
+   border-right: 35px solid #0087c5;
+   border-left: 35px solid #0087c5;
+   border-radius: 6px;
+   width:600px;
+   /*height:600px;*/
+}
+.botonMegusta{
+    background: #00D8FF;
+}
+
+
+.conetenedorInformacion{
+    background: #FFD09E;
+}
+.contenedorDescripcion{
+    border: 1px solid;
+}
+
+.cajaComentario{
+    border: 2px solid;
+}
+.newComentario{
+    width:550px;
+    background: cadetblue;
+}

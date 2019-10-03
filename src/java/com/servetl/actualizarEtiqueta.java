@@ -36,7 +36,7 @@ public class actualizarEtiqueta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idR = Integer.parseInt(request.getParameter("idRevista"));
+        String idR = request.getParameter("idRevista");
         String etiqueta = request.getParameter("tags");
         
         

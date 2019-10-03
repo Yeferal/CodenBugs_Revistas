@@ -7,9 +7,9 @@ import java.io.InputStream;
 public class Revista {
     
     
-    private int id, numeroMeGUstas,ganacias, costoPorDia, cuotaSuscripcion, numeroSuscriptores;
+    private int id, numeroMeGUstas,ganacias, costoPorDia, cuotaSuscripcion, numeroSuscriptores,likes,comentar,gratis;
     private String titulo, descripcion,autor,fecha, categoria, etiqueta;
-    private boolean likes,comentar,gratis;
+    
     private InputStream pdf;
     
     
@@ -26,23 +26,23 @@ public class Revista {
     }
     public void setGratis(int estado){
         if(estado==1){
-            gratis=true;
+            gratis=1;
         }else{
-            gratis=false;
+            gratis=0;
         }
     }
     public void setLikes(int estado){
         if(estado==1){
-            likes = true;
+            likes = 1;
         }else{
-            likes = false;
+            likes = 0;
         }
     }
     public void setComentar(int estado){
         if(estado==1){
-            comentar = true;
+            comentar = 1;
         }else{
-            comentar = false;
+            comentar = 0;
         }
     }
     public void setID(int id){
@@ -58,6 +58,7 @@ public class Revista {
     public void setTags(String etiqueta){
         this.etiqueta = etiqueta;
     }
+//    public void set
     
     
     public int getID(){
@@ -86,6 +87,15 @@ public class Revista {
     }
     public String getTags(){
         return etiqueta;
+    }
+    public int getCometar(){
+        return comentar;
+    }
+    public int getGratis(){
+        return gratis;
+    }
+    public int getLikes(){
+        return likes;
     }
 
 }

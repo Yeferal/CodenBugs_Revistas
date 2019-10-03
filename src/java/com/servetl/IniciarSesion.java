@@ -61,11 +61,9 @@ public class IniciarSesion extends HttpServlet {
         }else if(sesion.usuario.getTipoUsuario().equals("Editor")){
             return "HomeResultado";
             //return "PageHomeEditor.jsp";
-        }else{
-            
         }
+            return "SuscriptorRevista";
         
-        return "";
     }
 
 

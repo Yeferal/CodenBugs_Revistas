@@ -107,16 +107,17 @@ public class RegistroRevista extends Conexion{
         }
         
     }
-    public void agregarEtiquetaRevista(int id, String etiqueta){
+    public void agregarEtiquetaRevista(String id, String etiqueta){
         
         try {
             conectar();
             insetar = conect.prepareStatement(INSERT+"etiquetas "+VALUES+"(?,?,?);");
             //insetar = conect.prepareStatement("INSERT INTO categorias VALUES (?,?,?);");
-            insetar.setInt(1, id);
+            insetar.setString(1, id);
             insetar.setString(2, getTituloRevista(id));
             
             insetar.setString(3, etiqueta);
+            
             insetar.executeUpdate();
             
             desconectar();
@@ -126,13 +127,14 @@ public class RegistroRevista extends Conexion{
         }
         
     }
-    private String getTituloRevista(int id){
+    private String getTituloRevista(String id){
         
         try {
             stmt = conect.createStatement();
             resultado = stmt.executeQuery(SELECT+"titulo "+FROM+"revista "+WHERE+"id_revista="+id+";");
             resultado.next();
-            System.out.println("Id revista: "+resultado.getInt(1));
+            
+            
             return resultado.getString(1);
             
             
