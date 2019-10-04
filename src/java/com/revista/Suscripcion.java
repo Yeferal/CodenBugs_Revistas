@@ -10,6 +10,7 @@ public class Suscripcion extends Conexion{
     
     private int idSuscripcion, idSuscriptor, idRevista, expiro, cancelo;
     private String nombreSuscriptor, tituloRevista, fechaSuscripcion;
+    private double costo, ganancia;
     
     public void actualizarDatosRevista(String nombre, String titulo){
         
@@ -27,6 +28,8 @@ public class Suscripcion extends Conexion{
                 setnombreSuscriptor(resultado.getString(3));
                 settituloRevista(resultado.getString(5));
                 setfechaSuscripcion(resultado.getString(8));
+            }else{
+                
             }
             
             
@@ -36,6 +39,21 @@ public class Suscripcion extends Conexion{
             ex.printStackTrace();
         }
         
+    }
+    
+    public boolean isSuscrito(String nombre, String titulo){
+        try {
+            conectar();
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+suscripciones+WHERE+"(id_suscriptor='"+nombre+"') AND (titulo_revista='"+titulo+"') AND (expiro=0) AND (cancelado=0);");                                       
+            if(resultado.next()){
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
     
     public void setidSuscripcion(int idSuscripcion){
@@ -62,6 +80,12 @@ public class Suscripcion extends Conexion{
     }
     public void setfechaSuscripcion(String fechaSuscripcion){
         this.fechaSuscripcion = fechaSuscripcion;
+    }
+    public void setCosto(double costo){
+        this.costo = costo;
+    }
+    public void setGanancia(double ganancia){
+        this.ganancia = ganancia;
     }
     
     
@@ -92,6 +116,13 @@ public class Suscripcion extends Conexion{
     }
     public Suscripcion getSuscripcion(){
         return this;
+    }
+    
+    public double getCosto(){
+        return costo;
+    }
+    public double getGanacia(){
+        return ganancia;
     }
     
 }

@@ -15,7 +15,6 @@ import com.revista.Suscripcion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,9 +26,10 @@ import javax.servlet.http.HttpSession;
  *
  * @author yefer
  */
-@WebServlet(name = "RevistaPreVisual", urlPatterns = {"/RevistaPreVisual"})
-public class RevistaPreVisual extends HttpServlet {
+@WebServlet(name = "RegistroLike", urlPatterns = {"/RegistroLike"})
+public class RegistroLike extends HttpServlet {
 
+    
     ListaRevistaEditor listaRevistas;
     ConsultaSuscriptor consulta = new ConsultaSuscriptor();
     SesionUsuario sesion = new SesionUsuario();
@@ -38,9 +38,19 @@ public class RevistaPreVisual extends HttpServlet {
     ArrayList<Comentario> comentariosRevistas = null;
     MeGusta megusta = new MeGusta();
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idR = Integer.parseInt(request.getParameter("idRevistaVista"));
+        
+    }
+
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        int idR = Integer.parseInt(request.getParameter("idR"));
         System.out.println("id: "+idR);
         HttpSession sesionUser = request.getSession();
         
@@ -56,7 +66,7 @@ public class RevistaPreVisual extends HttpServlet {
         comentariosRevistas = (ArrayList<Comentario>) consulta.listarComentarios(idR);
         System.out.println("tamanio: "+comentariosRevistas.size());
         
-        
+        megusta.insertarMeGusta(sesion.usuario.getNombre(), rev);
         
         if(suscripcion.isSuscrito(sesion.usuario.getNombre(), rev.getTitulo())){
             suscripcion.actualizarDatosRevista(sesion.usuario.getNombre(), rev.getTitulo());
@@ -75,23 +85,8 @@ public class RevistaPreVisual extends HttpServlet {
         
         request.getRequestDispatcher("page-ver-revista.jsp").forward(request, response);
         
-        
-    }
-
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-
 
 }

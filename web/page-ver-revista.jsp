@@ -4,6 +4,7 @@
     Author     : yefer
 --%>
 
+<%@page import="com.revista.MeGusta"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,15 +23,27 @@
             
             <div class="conetenedorInformacion">
                 <c:set var="revista" value="${revistaVista}"></c:set>
+                <c:set var="likes" value="${megusta}"></c:set>
+                <c:set var="nombre" value="${nombresus}"></c:set>
+                <% MeGusta megus = new MeGusta();%>
                 <p>Titulo: ${revista.getTitulo()}</p>
                 <p><a href="#">Autor: ${revista.getAutor()}</a></p>
                 <p>Categoria: ${revista.getCategoria()}</p>
                 <p>Precio: ${revista.getCuotaSuscripcion()}</p>
                 <p>Fecha: ${revista.getFecha()}</p>
-                <form action="#">
-                    <input type="submit" value="me gusta" name="botonMegusta" class="botonMegusta"/>
-                    15
+                
+                
+                    <form action="">
+                    <input type="submit" value="no me gusta" name="botonMegusta" class="botonMegusta"/>
+                    : ${likes.verLikes(revista.getID())}
                 </form>
+               
+                    <form action="RegistroLike?idR=${revista.getID()}" method="post">
+                        <input type="submit" value="me gusta" name="botonMegusta" class="botonMegusta"/>
+                        : ${likes.verLikes(revista.getID())}
+                    </form>
+                
+                
             </div>
             
             <div class="contenedorDescripcion">
@@ -38,15 +51,18 @@
                 ${revista.getDescripcion()}
             </div>
             <div>
-                <c:if test="${requestScope['suscripcion'] != null}">
+                <c:if test="${requestScope['suscripcion'] == 0}">
                     <form action="Suscribirse?datoo=${revista.getID()}" method="post">
                         <input type="submit" value="Suscribirse"/>
                     </form>
                 </c:if>
                 
-                <c:if test="${requestScope['suscripcion'] == null}">
+                <c:if test="${requestScope['suscripcion'] != 0}">
                     <form action="" >
                         <input type="submit" value="Desuscribirse"/>
+                    </form>
+                    <form action="" >
+                        <input type="submit" value="Pagar Mes"/>
                     </form>
                 </c:if>
                 

@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : page-reporte-suscripcion
+    Created on : 4/10/2019, 01:48:31 AM
+    Author     : yefer
+--%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +15,6 @@
     </head>
     <body>
         <%@include file="navegacion-reporte-editor.html" %>
-        
         <div>
             <div>
                 Por Intervalo de tiempo
@@ -48,21 +51,23 @@
                 <tr>
                     <th>Suscriptor</th>
                     <th>Revista</th>
-                    <th>Comentario</th>
                     <th>Fecha</th>
+                    <th>Pago</th>
+                    <th>Ganancia</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="comentarios" items="${comentario}"> 
+                <c:forEach var="suscripcion" items="${suscripcion}"> 
                 <tr>
-                    <td>${comentarios.getUsuario()}</td>
-                    <td>${comentarios.getTitulo()}</td>
-                    <td>${comentarios.getComentario()}</td>
-                    <td>${comentarios.getFecha()}</td>
+                    <td>${suscripcion.getnombreSuscriptor()}</td>
+                    <td>${suscripcion.gettituloRevista()}</td>
+                    <td>${suscripcion.getfechaSuscripcion()}</td>
+                    <td>${suscripcion.getCosto()}</td>
+                    <td>${suscripcion.getGanacia()}</td>
                 </tr>
                 </c:forEach>
             </tbody>
         </table>
-
+        
     </body>
 </html>

@@ -25,7 +25,7 @@ public class ConsultaSuscriptor extends Conexion{
         
         try {
             stmt = conect.createStatement();
-            resultado = stmt.executeQuery(SELECT+"r.id_revista, r.titulo, r.descripcion, r.autor, (select categoria from categorias WHERE id_revista=r.id_revista) categoria,r.fecha, r.pdf "+FROM+"revista r left join suscripciones s on ((r.id_revista=s.id_revista) and (s.nombre_suscriptor='"+nombre+"')) WHERE (s.id_suscripcion is null);");
+            resultado = stmt.executeQuery(SELECT+"r.id_revista, r.titulo, r.descripcion, r.autor, (select categoria from categorias WHERE id_revista=r.id_revista) categoria,r.fecha, r.pdf "+FROM+"revista r left join suscripciones s on ((r.id_revista=s.id_revista) and (s.nombre_suscriptor='"+nombre+"')) WHERE (s.id_suscripcion is null )and (r.costo_por_dia<>0);");
             while (resultado.next()) {                
                 Revista rev = new Revista();
             rev.setDatosPrincipales(resultado.getString(2),resultado.getString(3) , resultado.getString(4), resultado.getString(5), resultado.getString(6), resultado.getBinaryStream(7));

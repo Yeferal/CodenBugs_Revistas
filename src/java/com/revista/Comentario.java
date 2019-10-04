@@ -5,7 +5,7 @@ package com.revista;
 public class Comentario extends Conexion{
     
     
-    private String cadenHtml;
+    private String titulo;
     String usuario,fecha,comentario;
     
     
@@ -17,6 +17,9 @@ public class Comentario extends Conexion{
     }
     public void setComentario(String comentario){
         this.comentario = comentario;
+    }
+    public void setTitulo(String titulo){
+        this.titulo = titulo;
     }
     
     
@@ -30,7 +33,7 @@ public class Comentario extends Conexion{
         return comentario;
     }
     
-    public void setCadena(int idRevista){
-        
+    public String getTitulo(){
+        return titulo;
     }
 }
