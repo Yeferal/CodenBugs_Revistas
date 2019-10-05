@@ -10,7 +10,7 @@ public class Suscripcion extends Conexion{
     
     private int idSuscripcion, idSuscriptor, idRevista, expiro, cancelo;
     private String nombreSuscriptor, tituloRevista, fechaSuscripcion;
-    private double costo, ganancia;
+    private double costo, ganancia, porcentaje;
     
     public void actualizarDatosRevista(String nombre, String titulo){
         
@@ -87,6 +87,9 @@ public class Suscripcion extends Conexion{
     public void setGanancia(double ganancia){
         this.ganancia = ganancia;
     }
+    public void setPorcentaje(double porcentaje){
+        this.porcentaje = porcentaje;
+    }
     
     
     public int getidSuscripcion(){
@@ -123,6 +126,9 @@ public class Suscripcion extends Conexion{
     }
     public double getGanacia(){
         return ganancia;
+    }
+    public double getPorcentaje(){
+        return porcentaje;
     }
     
 }

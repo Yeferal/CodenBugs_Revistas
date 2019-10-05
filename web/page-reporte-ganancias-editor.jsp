@@ -1,6 +1,6 @@
 <%-- 
-    Document   : page-reporte-suscripcion
-    Created on : 4/10/2019, 01:48:31 AM
+    Document   : page-reporte-ganancias-editor
+    Created on : 5/10/2019, 12:04:01 AM
     Author     : yefer
 --%>
 
@@ -15,10 +15,11 @@
     </head>
     <body>
         <%@include file="navegacion-reporte-editor.html" %>
+        <c:set var="cantidad" value="${ganancia}"></c:set>
         <div>
             <div>
                 Por Intervalo de tiempo
-                <form action="ReporteSuscripcion?tipo=2" method="post">
+                <form action="ReporteGananciasEditor?tipo=2" method="post">
                     <input type="date" name="fecha1" required/>
                     <label>Entre</label>
                     <input type="date" name="fecha2" required/>
@@ -28,7 +29,7 @@
             </div><br>
             <div>
                 Por Revista
-                <form action="ReporteSuscripcion?tipo=1" method="post">
+                <form action="ReporteGananciasEditor?tipo=1" method="post">
                     <input type="text" name="nombreRevista" placeholder="Titulo Revista" required/>
                     
                     <input type="submit" value="Buscar"/>
@@ -36,7 +37,7 @@
             </div><br>
             <div>
                 Filtrar por Intervalo y Revista
-                <form action="ReporteSuscripcion?tipo=3" method="post">
+                <form action="ReporteGananciasEditor?tipo=3" method="post">
                     <input type="date" name="fecha1" required/>
                     <label>Entre</label>
                     <input type="date" name="fecha2" required/><br>
@@ -44,7 +45,8 @@
                     <input type="submit" value="Buscar"/>
                 </form>
             </div>
-        </div>
+        </div><br><br><br>
+        <p>Total de Ganacias: ${cantidad}</p>
         
         <table border="1" cellpadding="1">
             <thead>
@@ -52,6 +54,7 @@
                     <th>Suscriptor</th>
                     <th>Revista</th>
                     <th>Fecha</th>
+                    <th>Porcentaje</th>
                     <th>Pago</th>
                     <th>Ganancia</th>
                 </tr>
@@ -62,12 +65,34 @@
                     <td>${suscripcion.getnombreSuscriptor()}</td>
                     <td>${suscripcion.gettituloRevista()}</td>
                     <td>${suscripcion.getfechaSuscripcion()}</td>
+                    <td>${suscripcion.getPorcentaje()}</td>
                     <td>${suscripcion.getCosto()}</td>
                     <td>${suscripcion.getGanacia()}</td>
+                    
                 </tr>
                 </c:forEach>
             </tbody>
         </table>
-        
+                <br><br>
+                
+                
+        <table border="1" cellpadding="1">
+            <thead>
+                <tr>
+                    <th>Revista</th>
+                    <th>Cantidad de Suscripciones</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="numero" items="${cantidadsuscripcion}"> 
+                <tr>
+                    <td>${numero.gettituloRevista()}</td>
+                    <td>${numero.getidSuscripcion()}</td>
+                </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+            
     </body>
 </html>

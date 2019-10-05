@@ -40,7 +40,7 @@
                 <input type="password" name="passwrd" placeholder="Ingresar Constraseña" required>
                 <input type="submit" value="Iniciar Sesion">
                 <br>
-                <a href="PageNewAccout.jsp">¿No tienes una cuenta?</a>
+                <a href="page-new-accout.jsp">¿No tienes una cuenta?</a>
                 
             </form>
         </div>

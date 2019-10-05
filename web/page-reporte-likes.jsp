@@ -1,6 +1,6 @@
 <%-- 
-    Document   : page-reporte-suscripcion
-    Created on : 4/10/2019, 01:48:31 AM
+    Document   : page-reporte-likes
+    Created on : 4/10/2019, 06:47:54 PM
     Author     : yefer
 --%>
 
@@ -18,7 +18,7 @@
         <div>
             <div>
                 Por Intervalo de tiempo
-                <form action="ReporteSuscripcion?tipo=2" method="post">
+                <form action="ReporteLIkesEditor?tipo=2" method="post">
                     <input type="date" name="fecha1" required/>
                     <label>Entre</label>
                     <input type="date" name="fecha2" required/>
@@ -28,7 +28,7 @@
             </div><br>
             <div>
                 Por Revista
-                <form action="ReporteSuscripcion?tipo=1" method="post">
+                <form action="ReporteLIkesEditor?tipo=1" method="post">
                     <input type="text" name="nombreRevista" placeholder="Titulo Revista" required/>
                     
                     <input type="submit" value="Buscar"/>
@@ -36,7 +36,7 @@
             </div><br>
             <div>
                 Filtrar por Intervalo y Revista
-                <form action="ReporteSuscripcion?tipo=3" method="post">
+                <form action="ReporteLIkesEditor?tipo=3" method="post">
                     <input type="date" name="fecha1" required/>
                     <label>Entre</label>
                     <input type="date" name="fecha2" required/><br>
@@ -46,28 +46,49 @@
             </div>
         </div>
         
-        <table border="1" cellpadding="1">
+        <div>
+            <h1>Tabla de likes</h1>
+            <table border="1" cellpadding="1">
             <thead>
                 <tr>
                     <th>Suscriptor</th>
                     <th>Revista</th>
                     <th>Fecha</th>
-                    <th>Pago</th>
-                    <th>Ganancia</th>
+                    
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="suscripcion" items="${suscripcion}"> 
+                <c:forEach var="megustainfos" items="${megustainfo}"> 
                 <tr>
-                    <td>${suscripcion.getnombreSuscriptor()}</td>
-                    <td>${suscripcion.gettituloRevista()}</td>
-                    <td>${suscripcion.getfechaSuscripcion()}</td>
-                    <td>${suscripcion.getCosto()}</td>
-                    <td>${suscripcion.getGanacia()}</td>
+                    <td>${megustainfos.getnombreSuscriptor()}</td>
+                    <td>${megustainfos.gettituloRevista()}</td>
+                    <td>${megustainfos.getfechaLike()}</td>
+                    
                 </tr>
                 </c:forEach>
             </tbody>
         </table>
-        
+        </div><br>
+              <br>  
+                <div>
+                    <h1>Tabla de Cantidad likes</h1>
+            <table border="1" cellpadding="1">
+            <thead>
+                <tr>
+                    <th>Revista</th>
+                    <th>Cantidad Likes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="cantidadmegustas" items="${cantidadmegusta}"> 
+                <tr>
+                    <td>${cantidadmegustas.gettituloRevista()}</td>
+                    <td>${cantidadmegustas.getNoLikes()}</td>
+                    
+                </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+        </div>
     </body>
 </html>
