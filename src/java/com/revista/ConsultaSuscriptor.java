@@ -97,4 +97,30 @@ public class ConsultaSuscriptor extends Conexion{
     }
     
     
+    public Usuario getAutor(String nombre){
+        Usuario usuario = new Usuario();
+        
+        try {
+            conectar();
+            
+            stmt = conect.createStatement();
+            resultado =  stmt.executeQuery(SELECT+"* "+FROM+"perfil "+WHERE+"nombre='"+nombre+"';");
+            resultado.next();
+            usuario.setNombre(resultado.getString(2));
+            usuario.setGustos(resultado.getString(4));
+            usuario.setHobbies(resultado.getString(6));
+            usuario.setIntereses(resultado.getString(7));
+            usuario.setDescripcion(resultado.getString(8));
+            
+            desconectar();
+        } catch (SQLException e) {
+        }
+        
+        
+        return usuario;
+        
+        
+    }
+    
+    
 }

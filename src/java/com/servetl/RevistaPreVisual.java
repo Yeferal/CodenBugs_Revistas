@@ -9,6 +9,7 @@ import com.revista.Comentario;
 import com.revista.ConsultaSuscriptor;
 import com.revista.ListaRevistaEditor;
 import com.revista.MeGusta;
+import com.revista.RegistroRevista;
 import com.revista.Revista;
 import com.revista.SesionUsuario;
 import com.revista.Suscripcion;
@@ -37,6 +38,8 @@ public class RevistaPreVisual extends HttpServlet {
     Suscripcion suscripcion = new Suscripcion();
     ArrayList<Comentario> comentariosRevistas = null;
     MeGusta megusta = new MeGusta();
+    RegistroRevista registroRevista = new RegistroRevista();
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -63,6 +66,17 @@ public class RevistaPreVisual extends HttpServlet {
             request.setAttribute("suscripcion", 1);
         }else{
             request.setAttribute("suscripcion", 0);
+        }
+        if(registroRevista.isLikes(idR)){
+            request.setAttribute("ismegusta", 1);
+        }else{
+            request.setAttribute("ismegusta", 0);
+        }
+        
+        if(registroRevista.isGratis(idR)){
+            request.setAttribute("isgratis", 1);
+        }else{
+            request.setAttribute("isgratis", 0);
         }
         
         request.setAttribute("nombresus", sesion.usuario.getNombre());

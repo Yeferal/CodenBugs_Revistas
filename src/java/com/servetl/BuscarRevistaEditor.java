@@ -46,7 +46,7 @@ public class BuscarRevistaEditor extends HttpServlet {
         listaRevistas = new ListaRevistaEditor(sesion.usuario.getNombre());
         
         listaRevistas.listarRevistasBuscada((String) request.getParameter("cajaBuscar"));
-        System.out.println("nombre: "+request.getAttribute("cajaBuscar"));
+        System.out.println("nombre: "+request.getParameter("cajaBuscar"));
         
         ArrayList<Revista> lista =(ArrayList<Revista>) listaRevistas.listarRevistasBuscada((String) request.getParameter("cajaBuscar"));
         System.out.println("tamanio: "+ lista.size());

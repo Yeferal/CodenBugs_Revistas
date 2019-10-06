@@ -71,7 +71,6 @@ public class PagoSuscripcion extends HttpServlet {
         sesion.setInformacion(SesionUsuario.usuario.getNombre());
         listaRevistas = new ListaRevistaEditor(sesion.usuario.getNombre());
         
-        System.out.println("id: "+idR);
         rev = listaRevistas.setRevista(idR);
         double pago = rev.getCuotaSuscripcion();
         

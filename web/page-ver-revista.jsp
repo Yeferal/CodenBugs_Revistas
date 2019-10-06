@@ -27,21 +27,30 @@
                 <c:set var="nombre" value="${nombresus}"></c:set>
                 <% MeGusta megus = new MeGusta();%>
                 <p>Titulo: ${revista.getTitulo()}</p>
-                <p><a href="#">Autor: ${revista.getAutor()}</a></p>
+                <p><a href="VerAutor?autor=${revista.getAutor()}" target="_Blank">Autor: ${revista.getAutor()}</a></p>
                 <p>Categoria: ${revista.getCategoria()}</p>
-                <p>Precio: ${revista.getCuotaSuscripcion()}</p>
+                <c:if test="${requestScope['isgratis'] == 0}">
+                    <p>Precio: ${revista.getCuotaSuscripcion()}</p>
+                </c:if>
+                <c:if test="${requestScope['isgratis'] == 1}">
+                    <p>Precio: Gratis</p>
+                </c:if>
+                
+                
                 <p>Fecha: ${revista.getFecha()}</p>
                 
-                
+                <c:if test="${requestScope['ismegusta'] == 1}">
                     <form action="">
                     <input type="submit" value="no me gusta" name="botonMegusta" class="botonMegusta"/>
                     : ${likes.verLikes(revista.getID())}
-                </form>
+                    </form>
                
                     <form action="RegistroLike?idR=${revista.getID()}" method="post">
                         <input type="submit" value="me gusta" name="botonMegusta" class="botonMegusta"/>
                         : ${likes.verLikes(revista.getID())}
                     </form>
+                </c:if>
+                    
                 
                 
             </div>

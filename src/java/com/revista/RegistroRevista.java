@@ -33,6 +33,7 @@ public class RegistroRevista extends Conexion{
             desconectar();
             insetar = null;
             
+            insertarRestriccion(request);
             insertarCategoria(request);
             
             
@@ -41,6 +42,56 @@ public class RegistroRevista extends Conexion{
         }
         
     }
+    
+    public void insertarRestriccion(HttpServletRequest request) throws SQLException{
+        conectar();
+        if(request.getParameter("gratisRevista").equals("0")){
+            
+            insetar = conect.prepareStatement(UPDATE+revista+SET+"gratis=1 "+WHERE+"id_revista="+getUltimaRevista()+";");
+            insetar.executeUpdate();
+        }
+        if(request.getParameter("bloquearComentarios").equals("0")){
+            insetar = conect.prepareStatement(UPDATE+revista+SET+"comentar=0 "+WHERE+"id_revista="+getUltimaRevista()+";");
+            insetar.executeUpdate();
+        }
+        if(request.getParameter("bloquearLikes").equals("0")){
+            insetar = conect.prepareStatement(UPDATE+revista+SET+"likes=0 "+WHERE+"id_revista="+getUltimaRevista()+";");
+            insetar.executeUpdate();
+        }
+        desconectar();
+        
+    }
+    
+    public void modificarRestriccion(HttpServletRequest request,int id) throws SQLException{
+        conectar();
+        if(request.getParameter("gratisRevista")==null){
+            
+            insetar = conect.prepareStatement(UPDATE+revista+SET+"gratis=0 "+WHERE+"id_revista="+id+";");
+            insetar.executeUpdate();
+        }else{
+            insetar = conect.prepareStatement(UPDATE+revista+SET+"gratis=1 "+WHERE+"id_revista="+id+";");
+            insetar.executeUpdate();
+        }
+        
+        if(request.getParameter("bloquearComentarios")==null){
+            insetar = conect.prepareStatement(UPDATE+revista+SET+"comentar=1 "+WHERE+"id_revista="+id+";");
+            insetar.executeUpdate();
+        }else{
+            insetar = conect.prepareStatement(UPDATE+revista+SET+"comentar=0 "+WHERE+"id_revista="+id+";");
+            insetar.executeUpdate();
+        }
+        
+        if(request.getParameter("bloquearLikes")==null){
+            insetar = conect.prepareStatement(UPDATE+revista+SET+"likes=1 "+WHERE+"id_revista="+id+";");
+            insetar.executeUpdate();
+        }else{
+            insetar = conect.prepareStatement(UPDATE+revista+SET+"likes=0 "+WHERE+"id_revista="+id+";");
+            insetar.executeUpdate();
+        }
+        desconectar();
+        
+    }
+    
     
     
     private void insertarCategoria(HttpServletRequest request){
@@ -61,7 +112,59 @@ public class RegistroRevista extends Conexion{
             ex.printStackTrace();
         }
         
-    }  
+    }
+    public boolean isGratis(int id){
+        
+        try {
+            conectar();
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"gratis "+FROM+"revista "+WHERE+"id_revista="+id+";");
+            resultado.next();
+            if(resultado.getInt(1)==0){
+                return false;
+            }
+            
+            desconectar();
+        } catch (SQLException e) {
+        }
+        
+        return true;
+    }
+    public boolean isLikes(int id){
+        
+        try {
+            conectar();
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"likes "+FROM+"revista "+WHERE+"id_revista="+id+";");
+            resultado.next();
+            if(resultado.getInt(1)==0){
+                return false;
+            }
+            
+            desconectar();
+        } catch (SQLException e) {
+        }
+        
+        return true;
+    }
+    
+    public boolean isComentar(int id){
+        
+        try {
+            conectar();
+            stmt = conect.createStatement();
+            resultado = stmt.executeQuery(SELECT+"comentar "+FROM+"revista "+WHERE+"id_revista="+id+";");
+            resultado.next();
+            if(resultado.getInt(1)==0){
+                return false;
+            }
+            
+            desconectar();
+        } catch (SQLException e) {
+        }
+        
+        return true;
+    }
     
     
     

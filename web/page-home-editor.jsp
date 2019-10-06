@@ -21,7 +21,7 @@
                     <input type="submit" value="Actualizar"/>
                 </form>
                 <div class="contenedorBuscar">
-                    <form action="BuscarRevistaEditor" method="GET">
+                    <form action="BuscarRevistaEditor" method="get">
                     <input type="text" name="cajaBuscar" class="buscar"/>
                     <input type="submit" value="Buscar" name="botonBuscar"/>
                 </form>
@@ -35,6 +35,7 @@
                         <th>ID</th>
                         <th>Titulo</th>
                         <th>Informacion</th>
+                        <th>Restriccion</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -48,6 +49,11 @@
                             <td><%=numero%></td>
                             <td><a href="VerRevista?id=${dato.getID()}" target="_Blank">${dato.getTitulo()}</a></td>
                             <td>${dato.getDescripcion()}</td>
+                            <td>
+                                <form action="Restriccion?idR=${dato.getID()}&tipo=1" method="post">
+                                    <input type="submit" value="Modificar"/>
+                                </form>
+                            </td>
                             </tr>
                         </c:forEach>
      

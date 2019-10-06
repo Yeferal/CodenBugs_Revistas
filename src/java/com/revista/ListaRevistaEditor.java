@@ -100,7 +100,7 @@ public class ListaRevistaEditor extends Conexion{
         
         try {
             stmt = conect.createStatement();
-            resultado = stmt.executeQuery(SELECT+"* "+FROM+revista+WHERE+"titulo='"+nombre+"';");
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+this.revista+WHERE+"titulo='"+nombre+"';");
             
             while (resultado.next()) {    
                 String categoriasLista = "";

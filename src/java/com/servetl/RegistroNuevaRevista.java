@@ -40,6 +40,10 @@ public class RegistroNuevaRevista extends HttpServlet {
         registroRevsita = new RegistroRevista();
         registroRevsita.insertarRevista(request, sesion.usuario);
         
+        System.out.println("Check 1: "+request.getParameter("gratisRevista"));
+        System.out.println("Check 2: "+request.getParameter("bloquearComentarios"));
+        System.out.println("Check 3: "+request.getParameter("bloquearLikes"));
+        
         
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("page-nueva-revista-editor.jsp");
