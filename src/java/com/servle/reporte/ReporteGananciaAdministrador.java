@@ -5,7 +5,7 @@
  */
 package com.servle.reporte;
 
-import com.revista.LIkes;
+import com.revista.ReporteGananciasAdministrador;
 import com.revista.SesionUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,15 +20,13 @@ import javax.servlet.http.HttpSession;
  *
  * @author yefer
  */
-@WebServlet(name = "ReporteLIkesEditor", urlPatterns = {"/ReporteLIkesEditor"})
-public class ReporteLIkesEditor extends HttpServlet {
+@WebServlet(name = "ReporteGananciaAdministrador", urlPatterns = {"/ReporteGananciaAdministrador"})
+public class ReporteGananciaAdministrador extends HttpServlet {
 
-    SesionUsuario sesion = new SesionUsuario();
-    LIkes reporte = new LIkes();
+    ReporteGananciasAdministrador reporte = new ReporteGananciasAdministrador();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         
         int tipo = Integer.parseInt(request.getParameter("tipo"));
         String titulo = request.getParameter("nombreRevista");
@@ -37,21 +35,17 @@ public class ReporteLIkesEditor extends HttpServlet {
         
         
         
-        System.out.println("tipo: "+tipo);
-        HttpSession sesionUser = request.getSession();
+              
+        reporte.verificarTipo(tipo, titulo, fecha1, fecha2);
         
-        SesionUsuario.usuario.setNombre(sesionUser.getAttribute("Usuario").toString());
+        request.setAttribute("suscripcion", reporte.listarSuscripcion());
+        request.setAttribute("ingreso", reporte.listarIngresos());
+        request.setAttribute("total", reporte.listarTotal());
         
-        sesion.setInformacion(SesionUsuario.usuario.getNombre());
+        request.getRequestDispatcher("page-reporte-ganancias-administrador.jsp").forward(request, response);
         
-        reporte.verificarTipoReporte(tipo, titulo, fecha1, fecha2, sesion.usuario.getNombre());
-        
-        request.setAttribute("megustainfo", reporte.listarLIkes());
-        request.setAttribute("cantidadmegusta", reporte.listarCantidadLikes());
-        
-        request.getRequestDispatcher("page-reporte-likes.jsp").forward(request, response);
-    
     }
+
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -7,6 +7,7 @@ public class Comentario extends Conexion{
     
     private String titulo;
     String usuario,fecha,comentario;
+    private int cantidad;
     
     
     public void setUsuario(String usuario){
@@ -20,6 +21,9 @@ public class Comentario extends Conexion{
     }
     public void setTitulo(String titulo){
         this.titulo = titulo;
+    }
+    public void setCantidad(int cantidad){
+        this.cantidad = cantidad;
     }
     
     
@@ -35,5 +39,8 @@ public class Comentario extends Conexion{
     
     public String getTitulo(){
         return titulo;
+    }
+    public int getCantidad(){
+        return cantidad;
     }
 }

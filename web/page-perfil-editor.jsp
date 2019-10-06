@@ -44,7 +44,9 @@
             %>
             <%=datos.getCadena()%>
             
-                    
+            <form action="page-perfil-nuevo.jsp">
+                <input type="submit" value="Editar"/>
+            </form>            
         </div>
         
     </body>

@@ -51,17 +51,21 @@
                 ${revista.getDescripcion()}
             </div>
             <div>
-                <c:if test="${requestScope['suscripcion'] == 0}">
+                <c:set var="susp" value="${suscripcion}"></c:set>
+                
+                <c:if test="${susp == 0}">
                     <form action="Suscribirse?datoo=${revista.getID()}" method="post">
                         <input type="submit" value="Suscribirse"/>
                     </form>
                 </c:if>
                 
-                <c:if test="${requestScope['suscripcion'] != 0}">
-                    <form action="" >
-                        <input type="submit" value="Desuscribirse"/>
+                <c:if test="${susp != 0}">
+                    <a href="VerRevista?id=${revista.getID()}" target="_Blank">Leer Revista</a><br>
+                    <form action="Desuscribirse?datoo=${revista.getID()}" method="post">
+                        <input type="submit" value="Desuscribirse" method="post"/>
                     </form>
-                    <form action="" >
+                        <br>
+                    <form action="Suscribirse?datoo=${revista.getID()}" method="post">
                         <input type="submit" value="Pagar Mes"/>
                     </form>
                 </c:if>
@@ -71,6 +75,7 @@
             
             <div>
                 <c:set var="comen" value="comentariosRev"></c:set>
+                
                 <c:if test="${requestScope['comentariosRev.size()'] != 0}">
                     <p>Comentarios:</p>
                     <c:forEach var="dato" items="${comentariosRev}">

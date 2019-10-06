@@ -45,7 +45,8 @@ public class Suscripcion extends Conexion{
         try {
             conectar();
             stmt = conect.createStatement();
-            resultado = stmt.executeQuery(SELECT+"* "+FROM+suscripciones+WHERE+"(id_suscriptor='"+nombre+"') AND (titulo_revista='"+titulo+"') AND (expiro=0) AND (cancelado=0);");                                       
+            resultado = stmt.executeQuery(SELECT+"* "+FROM+suscripciones+WHERE+"(nombre_suscriptor='"+nombre+"') AND (titulo_revista='"+titulo+"') AND (expiro=0) AND (cancelado=0);");                                       
+            System.out.println(SELECT+"* "+FROM+suscripciones+WHERE+"(id_suscriptor='"+nombre+"') AND (titulo_revista='"+titulo+"') AND (expiro=0) AND (cancelado=0);");
             if(resultado.next()){
                 return true;
             }

@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +28,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author yefer
  */
-@WebServlet(name = "PagoSuscripcion", urlPatterns = {"/PagoSuscripcion"})
-public class PagoSuscripcion extends HttpServlet {
+@WebServlet(name = "Desuscribirse", urlPatterns = {"/Desuscribirse"})
+public class Desuscribirse extends HttpServlet {
 
     ListaRevistaEditor listaRevistas;
     ConsultaSuscriptor consulta = new ConsultaSuscriptor();
@@ -43,13 +44,16 @@ public class PagoSuscripcion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        
+        
+        
     }
 
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     
@@ -57,11 +61,7 @@ public class PagoSuscripcion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-        System.out.println("ver: "+request.getParameter("datoo")); 
-        
         int idR = Integer.parseInt(request.getParameter("datoo"));
-        String fecha = request.getParameter("fecha");
         
         
         HttpSession sesionUser = request.getSession();
@@ -70,27 +70,26 @@ public class PagoSuscripcion extends HttpServlet {
         
         sesion.setInformacion(SesionUsuario.usuario.getNombre());
         listaRevistas = new ListaRevistaEditor(sesion.usuario.getNombre());
-        
-        System.out.println("id: "+idR);
+
         rev = listaRevistas.setRevista(idR);
         double pago = rev.getCuotaSuscripcion();
         
-        registro.insertarSuscripcion(sesion.usuario, rev, pago, fecha);
+        System.out.println("id: aara"+sesion.usuario.getNombre()+" "+idR);
+        
+        registro.desuscribirse(sesion.usuario.getNombre(), idR);
         
         suscripcion.actualizarDatosRevista(sesion.usuario.getNombre(), rev.getTitulo());
         comentariosRevistas = (ArrayList<Comentario>) consulta.listarComentarios(idR);
         
-        request.setAttribute("suscripcion", 1);
+        request.setAttribute("suscripcion", 0);
         
         request.setAttribute("revistaVista", rev);
         
         request.setAttribute("comentariosRev", (ArrayList<Comentario>)comentariosRevistas);
     
-        request.getRequestDispatcher("page-ver-revista.jsp").forward(request, response);
-    
-    }
-
-    
+        ServletOutputStream stream1 = response.getOutputStream();
+        stream1.print("<html><head></head><body onload=\"alert('Se Desuscribio Exitosamente'); window.location='page-ver-revista.jsp' \"></body></html>");
+        stream1.close();    }
 
 
 }

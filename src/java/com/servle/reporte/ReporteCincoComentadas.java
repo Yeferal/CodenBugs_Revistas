@@ -5,7 +5,7 @@
  */
 package com.servle.reporte;
 
-import com.revista.LIkes;
+import com.revista.ReporteComentariosEditor;
 import com.revista.SesionUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,17 +20,17 @@ import javax.servlet.http.HttpSession;
  *
  * @author yefer
  */
-@WebServlet(name = "ReporteLIkesEditor", urlPatterns = {"/ReporteLIkesEditor"})
-public class ReporteLIkesEditor extends HttpServlet {
+@WebServlet(name = "ReporteCincoComentadas", urlPatterns = {"/ReporteCincoComentadas"})
+public class ReporteCincoComentadas extends HttpServlet {
 
     SesionUsuario sesion = new SesionUsuario();
-    LIkes reporte = new LIkes();
+    ReporteComentariosEditor reporte = new ReporteComentariosEditor();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         
-        int tipo = Integer.parseInt(request.getParameter("tipo"));
+         int tipo = Integer.parseInt(request.getParameter("tipo"));
         String titulo = request.getParameter("nombreRevista");
         String fecha1 = request.getParameter("fecha1");
         String fecha2 = request.getParameter("fecha2");
@@ -44,14 +44,15 @@ public class ReporteLIkesEditor extends HttpServlet {
         
         sesion.setInformacion(SesionUsuario.usuario.getNombre());
         
-        reporte.verificarTipoReporte(tipo, titulo, fecha1, fecha2, sesion.usuario.getNombre());
+        reporte.verificarTipoReporteAdministrador(tipo, fecha1, fecha2);
         
-        request.setAttribute("megustainfo", reporte.listarLIkes());
-        request.setAttribute("cantidadmegusta", reporte.listarCantidadLikes());
+        request.setAttribute("cantidad", reporte.listarCantidadComentarios());
+        request.setAttribute("comentarios", reporte.listarCincoComentarios());
         
-        request.getRequestDispatcher("page-reporte-likes.jsp").forward(request, response);
-    
+        request.getRequestDispatcher("page-reporte-5comentadas.jsp").forward(request, response);
+        
     }
+
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

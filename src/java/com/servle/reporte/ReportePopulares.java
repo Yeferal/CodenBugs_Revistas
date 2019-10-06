@@ -20,15 +20,14 @@ import javax.servlet.http.HttpSession;
  *
  * @author yefer
  */
-@WebServlet(name = "ReporteLIkesEditor", urlPatterns = {"/ReporteLIkesEditor"})
-public class ReporteLIkesEditor extends HttpServlet {
+@WebServlet(name = "ReportePopulares", urlPatterns = {"/ReportePopulares"})
+public class ReportePopulares extends HttpServlet {
 
     SesionUsuario sesion = new SesionUsuario();
     LIkes reporte = new LIkes();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         
         int tipo = Integer.parseInt(request.getParameter("tipo"));
         String titulo = request.getParameter("nombreRevista");
@@ -44,14 +43,15 @@ public class ReporteLIkesEditor extends HttpServlet {
         
         sesion.setInformacion(SesionUsuario.usuario.getNombre());
         
-        reporte.verificarTipoReporte(tipo, titulo, fecha1, fecha2, sesion.usuario.getNombre());
+        reporte.verificarTipoPopular(tipo, fecha1, fecha2);
         
-        request.setAttribute("megustainfo", reporte.listarLIkes());
-        request.setAttribute("cantidadmegusta", reporte.listarCantidadLikes());
+        request.setAttribute("cantidad", reporte.listarCantidad());
+        request.setAttribute("megustas", reporte.listarlikesPopular());
         
-        request.getRequestDispatcher("page-reporte-likes.jsp").forward(request, response);
+        request.getRequestDispatcher("page-reporte-populares.jsp").forward(request, response);
     
     }
+
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -66,6 +66,6 @@ public class ReporteLIkesEditor extends HttpServlet {
         processRequest(request, response);
     }
 
-
+    
 
 }

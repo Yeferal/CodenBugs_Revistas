@@ -4,6 +4,7 @@
     Author     : yefer
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.revista.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%--<jsp:useBean id= "usuario" class="com.revista.Conexion"></jsp:useBean>--%>
@@ -17,6 +18,17 @@
         
     </head>
     <body>
+        <c:if test="${requestScope['error1'] != null}">
+            <script type="text/javascript">
+                alert("El usuario ya existe");
+            </script>
+        </c:if>
+        <c:if test="${requestScope['error2'] != null}">
+            <script type="text/javascript">
+                alert("Las contrasenas no son iguales");
+            </script>
+        </c:if>
+            
         <div class="container">
           <div>
                 <h2>Datos de Registro</h2>

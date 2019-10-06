@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet(name = "RegistroNuevoUsuario", urlPatterns = {"/RegistroNuevoUsuario"})
@@ -32,16 +33,24 @@ public class RegistroNuevoUsuario extends HttpServlet {
                 
                 con.insertarUsuario(request.getParameter("nombreUser"), request.getParameter("passwrd1"), request.getParameter("tipoUser"));
                 con.desconectar();
+                
+                HttpSession sesionUser = request.getSession(true);
+            String nombre = userSetion.usuario.getNombre();
+            
+            sesionUser.setAttribute("Usuario",nombre );
+            Usuario usuario = new Usuario();
+            usuario.setNombre(sesionUser.getAttribute("Usuario").toString());
+            
                 RequestDispatcher dispatcher = request.getRequestDispatcher("page-perfil-nuevo.jsp");
                 dispatcher.forward(request, response);
                 
             }else{
-                request.setAttribute("error", true);
+                request.setAttribute("error2", true);
                 RequestDispatcher dispatcher1 = request.getRequestDispatcher("page-new-accout.jsp");
                 dispatcher1.forward(request, response);
             }
         }else{
-            request.setAttribute("error", true);
+            request.setAttribute("error1", true);
             RequestDispatcher dispatcher2 = request.getRequestDispatcher("page-new-accout.jsp");
             dispatcher2.forward(request, response);
         }

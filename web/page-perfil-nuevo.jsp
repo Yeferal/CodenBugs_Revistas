@@ -19,7 +19,9 @@
     </head>
     <body>
         
-            <% 
+    <% 
+                
+                
                 String nombre=usuario.usuario.getNombre();
                 String tipo=usuario.usuario.getTipoUsuario();
             %>
@@ -28,7 +30,7 @@
                  
         <div class="foto">
             <div class="fotoPerfil">
-                <img src="" >
+                <img src="ImagenEncuentra" >
                   
             </div>
             Subir Foto
@@ -40,12 +42,12 @@
             
         </div>
       <div class="dataBasic">
-          
-            
-            
-            
+
           <h1>Nombre: <%=nombre%></h1>
           <h2>Tipo: <%=tipo%> </h2>
+          <form action="IngresoUsuario?tipo=<%=tipo%>" method="POST">
+              <input type="submit" value="Ir a Home">
+          </form>
       </div>
       <div class="dataDescript">
             <form action="ActualizarUsuario" method="POST">
@@ -59,7 +61,6 @@
         
                     <div class="seleciones">
                         <label for="">Gustos</label>
-                        <input type="checkbox"  id="1"><br>
                     <textarea id="areaIntereses" name="textareaInteres" rows="10" cols="50" placeholder="Escribe tus Intereses"></textarea><br>
                     </div>
         

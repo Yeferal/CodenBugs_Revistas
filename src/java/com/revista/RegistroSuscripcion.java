@@ -11,7 +11,7 @@ public class RegistroSuscripcion extends Conexion{
     
     
     public void insertarSuscripcion(Usuario usuario, Revista revista, double pagoSuscripcion, String fecha){
-        
+        desuscribirse(usuario.getNombre(),revista.getID());
         try {
             conectar();
             insetar = conect.prepareStatement(INSERT+suscripciones+"(id_suscriptor, nombre_suscriptor, id_revista, titulo_revista, porcentaje, pago, fecha_suscripcion, costo)"+VALUES+"(?,?,?,?,?,?,?,?)");
@@ -58,6 +58,20 @@ public class RegistroSuscripcion extends Conexion{
             ex.printStackTrace();
         }
         return 0;
+    }
+    
+    public void desuscribirse(String usuario, int idR){
+        
+        try {
+            conectar();
+            insetar = conect.prepareStatement("update suscripciones SET expiro=1, cancelado=1 WHERE nombre_suscriptor='"+usuario+"' AND id_revista="+idR+";");
+            
+            insetar.executeUpdate();
+            desconectar();
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
     }
     
     

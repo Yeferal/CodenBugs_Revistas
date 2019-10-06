@@ -60,7 +60,7 @@ public class RevistaPreVisual extends HttpServlet {
         
         if(suscripcion.isSuscrito(sesion.usuario.getNombre(), rev.getTitulo())){
             suscripcion.actualizarDatosRevista(sesion.usuario.getNombre(), rev.getTitulo());
-            request.setAttribute("suscripcion", suscripcion);
+            request.setAttribute("suscripcion", 1);
         }else{
             request.setAttribute("suscripcion", 0);
         }

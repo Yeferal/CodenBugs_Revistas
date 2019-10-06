@@ -58,7 +58,11 @@ public class Revista {
     public void setTags(String etiqueta){
         this.etiqueta = etiqueta;
     }
-//    public void set
+    
+    public void setAutor(String autor){
+        this.autor = autor;
+    }
+
     
     
     public int getID(){
