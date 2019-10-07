@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class RegistroSuscripcion extends Conexion{
     
     
-    
+    //inserta una nueva suscripcion dependiendo si es gratis o no
     public void insertarSuscripcion(Usuario usuario, Revista revista, double pagoSuscripcion, String fecha){
         desuscribirse(usuario.getNombre(),revista.getID());
         try {
@@ -48,7 +48,7 @@ public class RegistroSuscripcion extends Conexion{
         }
     }
     
-    
+    //muestra la fecha actual
     public String getFechaActual(){
         
         try {
@@ -61,7 +61,7 @@ public class RegistroSuscripcion extends Conexion{
         }
         return "";
     }
-    
+    //muestra el id del suscriptor
     public int getIdSuscriptor(String nombre){
         
         try {
@@ -75,7 +75,7 @@ public class RegistroSuscripcion extends Conexion{
         }
         return 0;
     }
-    
+    //quita una suscripcion
     public void desuscribirse(String usuario, int idR){
         
         try {
@@ -89,6 +89,7 @@ public class RegistroSuscripcion extends Conexion{
             ex.printStackTrace();
         }
     }
+    //reetorna la si es gratis o no
     public boolean isGratis(int id){
         
         try {
@@ -106,7 +107,7 @@ public class RegistroSuscripcion extends Conexion{
         
         return true;
     }
-    
+    //retorna la cuaota global
     public double getCostoGlobal(){
         
         double porcentaje = 0;

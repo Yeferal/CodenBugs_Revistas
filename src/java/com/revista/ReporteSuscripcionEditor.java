@@ -13,6 +13,7 @@ public class ReporteSuscripcionEditor extends Conexion{
     String consultaQuery;
     String campos = "nombre_suscriptor, titulo_revista, fecha_suscripcion,pago,(pago-porcentaje*pago) ganancia ";
     
+    //verifica el tipo de consulta que se hara para la base de datos
     public void verificarTipoReporte(int tipo, String titulo, String fecha1, String fecha2, String autor){
         
         switch(tipo){
@@ -35,7 +36,7 @@ public class ReporteSuscripcionEditor extends Conexion{
         }
         
     }
-    
+    //lista las suscripciones y las retorna
     public List listarSuscripciones(){
         List<Suscripcion> lista = new ArrayList<>();
         

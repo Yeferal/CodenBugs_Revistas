@@ -23,11 +23,11 @@ public class ListaRevistaEditor extends Conexion{
         cadenaHTML = "";
     }
     
-    
+    //muestra la cadena
     public String getCadena(){
         return cadenaHTML;
     }
-    
+    //lista las revistas con el nombre de una autor
     public List listarRevistas(){
         List<Revista> lista = new ArrayList<>();
         conectar();
@@ -59,7 +59,7 @@ public class ListaRevistaEditor extends Conexion{
     return lista;
     }
     
-    
+    //lista las revsitas que no tienen monto
     public List listarRevistasSinMonto(){
         List<Revista> lista = new ArrayList<>();
         conectar();
@@ -92,7 +92,7 @@ public class ListaRevistaEditor extends Conexion{
         }
     return lista;
     }
-    
+    //lista las revsitas buscada
     public List listarRevistasBuscada(String nombre){
         List<Revista> lista = new ArrayList<>();
         Revista revista = null;
@@ -126,7 +126,7 @@ public class ListaRevistaEditor extends Conexion{
         }
     return lista;
     }
-    
+    //agrega una revista para ser retornada
     public Revista setRevista(int id) {
         Revista revistaR = null;
         try {
@@ -172,7 +172,7 @@ public class ListaRevistaEditor extends Conexion{
         }
         return revistaR;
     }
-    
+    //lista todas las revsitas
     public List listarTodasRevistas(){
         List<Revista> lista = new ArrayList<>();
         conectar();
@@ -202,7 +202,7 @@ public class ListaRevistaEditor extends Conexion{
         }
         return lista;
     }
-    
+    //muestra la categoria de la revista
     private String getCategorias(int id){
         String categoriasLista = "";
         try {
@@ -218,6 +218,7 @@ public class ListaRevistaEditor extends Conexion{
         }
         return categoriasLista;
     }
+    //muestra la etiqueta de la revsita
     private String getEtiquetas(int id){
         String etiquetas = "";
         try {

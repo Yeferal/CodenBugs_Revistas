@@ -13,6 +13,7 @@ public class LIkes extends Conexion{
     private String campos = "m.nombre_suscriptor,m.titulo_revista, r.autor,m.fecha ";
     private String consulta1, consulta2;
     
+    //verifica el tipo de consulta que se hara para la base de datos
     public void verificarTipoReporte(int tipo, String titulo, String fecha1, String fecha2, String autor){
         
         switch(tipo){
@@ -40,7 +41,7 @@ public class LIkes extends Conexion{
         
         
     }
-    
+    //lista tpdos los likes
      public List listarLIkes(){
         List<MeGustaRegistro> lista = new ArrayList<>();
         
@@ -64,7 +65,7 @@ public class LIkes extends Conexion{
         
         return lista;
     }
-    
+    //lista la candtidad de likes
     public List listarCantidadLikes(){
         List<MeGustaRegistro> lista = new ArrayList<>();
         
@@ -87,7 +88,7 @@ public class LIkes extends Conexion{
         
         return lista;
     }
-    
+    //verifica el tipo de consulta para los populares
     public void verificarTipoPopular(int tipo, String fecha1, String fecha2){
         
         switch(tipo){
@@ -107,6 +108,7 @@ public class LIkes extends Conexion{
         
         
     }
+    //lista la cantidad de populares
     public List listarCantidad(){
         List<MeGustaRegistro> lista = new ArrayList<>();
         
@@ -130,7 +132,7 @@ public class LIkes extends Conexion{
         
         return lista;
     }
-    
+    //lista los likes papulares
     public List listarlikesPopular(){
         List<MeGustaRegistro> lista = new ArrayList<>();
         

@@ -15,7 +15,8 @@ public class ReporteGanaciasEdi extends Conexion{
     private String consultaQuery1,consultaQuery2;
     private String campos = "s.nombre_suscriptor,s.titulo_revista,s.fecha_suscripcion,s.porcentaje,s.pago, (s.pago-s.pago*s.porcentaje) ganacia ";
     
-     public void verificarTipoReporte(int tipo, String titulo, String fecha1, String fecha2, String autor){
+//Verifica el tipo de consulta para la base de datos
+    public void verificarTipoReporte(int tipo, String titulo, String fecha1, String fecha2, String autor){
         
         switch(tipo){
             case 1:
@@ -45,7 +46,7 @@ public class ReporteGanaciasEdi extends Conexion{
         System.out.println(consultaQuery);
         
     }
-    
+    //lista las suscripciones y las retorna
      public List listarSuscripciones(){
         List<Suscripcion> lista = new ArrayList<>();
         
@@ -71,7 +72,7 @@ public class ReporteGanaciasEdi extends Conexion{
         }
         return lista;
     }
-    
+    //lista la cantidad de suscripciones
     public List listarCantidadSuscripciones(){
         List<Suscripcion> lista = new ArrayList<>();
         
@@ -93,7 +94,7 @@ public class ReporteGanaciasEdi extends Conexion{
         }
         return lista;
     }
-    
+    //muestra las ganacias
     public double getCantidadGanancia(){
         double cantidad = 0;
         

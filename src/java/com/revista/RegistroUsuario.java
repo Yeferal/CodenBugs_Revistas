@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class RegistroUsuario extends Conexion{
     
     
-    
+    //crear un nuevo usuario
     public boolean crearUsuario(String nombre, String pass1, String pass2, String tipo){
         
         if(verificarExistenciaUsuario(nombre)){
@@ -19,7 +19,7 @@ public class RegistroUsuario extends Conexion{
         }
         return true;
     }
-    
+    //inserta un nuevo usuario
     public void insertarUsuario(String nombre, String pass, String tipo){
             try {
                 conect.setAutoCommit(false);
@@ -45,7 +45,7 @@ public class RegistroUsuario extends Conexion{
             }
         
     }
-    
+    //inserta a un admmiinistrador
     public void insertarAdministrador(String nombre, String pass, String codigo){
             try {
                 conect.setAutoCommit(false);
@@ -63,6 +63,7 @@ public class RegistroUsuario extends Conexion{
             }
         
     }
+    //verifica las constrasenias
     public boolean verificarPasswordIguales(String passwrd1,String passwrd2){
          if(passwrd1.equals(passwrd2)){
              return true;
@@ -72,7 +73,7 @@ public class RegistroUsuario extends Conexion{
     }
     
     
-    
+    //verica la existencia del usuraio
     public boolean  verificarExistenciaUsuario(String nombreUsuario){
         try {
             stmt = conect.createStatement();
@@ -91,7 +92,7 @@ public class RegistroUsuario extends Conexion{
     }
 
     
-    
+    //muestra el ultimon usuario  agregado
     public String mostrarUltimoUsuarioId(){
         try {
             stmt = conect.createStatement();
@@ -104,7 +105,7 @@ public class RegistroUsuario extends Conexion{
         return "0";
     }
     
-    
+    //actualiza lod datos del usuario
     public void actualizarDatosUsuario(Usuario usuario){
         try {
             insetar = conect.prepareStatement("UPDATE perfil SET gustos='"+usuario.getGustos()+"', hobbies='"+usuario.getHobbies()+"', intereses='"+usuario.getIntereses()+"', descripcion='"+usuario.getDescripcion()+"' WHERE nombre='"+usuario.getNombre()+"';");
@@ -114,7 +115,7 @@ public class RegistroUsuario extends Conexion{
             ex.printStackTrace();
         }
     }
-    
+    //inserta a un nuevo administrdor
     public void insertarAdministrador1(String nombre, String codigo, String pass){
         
         try {

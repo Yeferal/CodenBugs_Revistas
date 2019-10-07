@@ -22,10 +22,7 @@ public class BuscaImagenPerfil extends Conexion{
         this.usuario = sesion.usuario;
     }
     
-    /**Buscar si la foto del usuario existe si si retorna el nombre de la imagen
-     * de lo contrario retorna el nombre de la foto sin perfil
-     * @return 
-     */
+    
     
     /**Busca la foto de perfil en la base de datos
      * luego lo comvierte en bytes y estos son agregados al buffer

@@ -12,6 +12,7 @@ public class Suscripcion extends Conexion{
     private String nombreSuscriptor, tituloRevista, fechaSuscripcion;
     private double costo, ganancia, porcentaje;
     
+    //actualiza los datos de una revista
     public void actualizarDatosRevista(String nombre, String titulo){
         
         try {
@@ -40,7 +41,7 @@ public class Suscripcion extends Conexion{
         }
         
     }
-    
+    //muestra si esta suscrito
     public boolean isSuscrito(String nombre, String titulo){
         try {
             conectar();

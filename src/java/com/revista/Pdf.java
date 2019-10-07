@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class Pdf extends Conexion{
     
     
-    
+    //escribe el pdf en un byte para usarlo en la page
     public byte[] escribirPDF(int id) throws SQLException{
         byte[] data = null;
         conectar();

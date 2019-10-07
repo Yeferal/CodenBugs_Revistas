@@ -14,6 +14,7 @@ public class ReporteComentariosEditor extends Conexion{
     
     String consulta1, consulta2, consulta3;
     
+    //Verifica el tipo de consulta para la base de datos
     public void verificarTipoReporte(int tipo, String titulo, String fecha1, String fecha2, String autor){
         
         switch(tipo){
@@ -34,7 +35,7 @@ public class ReporteComentariosEditor extends Conexion{
         }
         
     }
-    
+    //lista los comentarios y los retorna
     public List listarComentarios(){
         List<Comentario> lista = new ArrayList<>();
         
@@ -61,7 +62,7 @@ public class ReporteComentariosEditor extends Conexion{
     }
     
     
-    
+   //Verifica el tipo de consulta para la base de datos
     public void verificarTipoReporteAdministrador(int tipo, String fecha1, String fecha2){
         
         switch(tipo){
@@ -77,7 +78,7 @@ public class ReporteComentariosEditor extends Conexion{
          }
         
     }
-    
+    //listas la cantidad de comentario y los retorna
     public List listarCantidadComentarios(){
         List<Comentario> lista = new ArrayList<>();
         
@@ -101,7 +102,7 @@ public class ReporteComentariosEditor extends Conexion{
         }
         return lista;
     }
-    
+    //lista los comentarios
     public List listarCincoComentarios(){
         List<Comentario> lista = new ArrayList<>();
         

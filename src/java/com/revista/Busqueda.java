@@ -12,6 +12,7 @@ public class Busqueda extends Conexion{
     
     String consulta;
     
+    //define el tipo de consilta que se hara para la base de datos
     public void verificarConsulta(String nombre, int tipo){
         
         switch(tipo){
@@ -25,7 +26,7 @@ public class Busqueda extends Conexion{
         }
         
     }
-    
+    //enlista las revistas que se encuentran en la base de datos
     public List listarRevistas(){
         List<Revista> lista = new ArrayList<>();
         conectar();

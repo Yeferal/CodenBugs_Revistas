@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class GuardarImagen extends Conexion{
     
     
-    
+    //inserta una imagen en la base de datos
     public void insertarImagen(Usuario usuario){
         
         try {

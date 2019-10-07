@@ -15,7 +15,7 @@ import javax.servlet.http.Part;
 public class RegistroRevista extends Conexion{
     
     
-    
+    //inserta una revista
     public void insertarRevista(HttpServletRequest request, Usuario usuario){
         try {
             conectar();
@@ -42,7 +42,7 @@ public class RegistroRevista extends Conexion{
         }
         
     }
-    
+    //inserta un retriccion
     public void insertarRestriccion(HttpServletRequest request) throws SQLException{
         conectar();
         if(request.getParameter("gratisRevista").equals("0")){
@@ -61,7 +61,7 @@ public class RegistroRevista extends Conexion{
         desconectar();
         
     }
-    
+    //modifica la restriccion
     public void modificarRestriccion(HttpServletRequest request,int id) throws SQLException{
         conectar();
         if(request.getParameter("gratisRevista")==null){
@@ -93,7 +93,7 @@ public class RegistroRevista extends Conexion{
     }
     
     
-    
+    //inserta una categoria
     private void insertarCategoria(HttpServletRequest request){
         
         try {
@@ -113,6 +113,7 @@ public class RegistroRevista extends Conexion{
         }
         
     }
+    //muestra si una revista es gratis
     public boolean isGratis(int id){
         
         try {
@@ -130,6 +131,7 @@ public class RegistroRevista extends Conexion{
         
         return true;
     }
+    //muestra su a una revista se le puede dar likes
     public boolean isLikes(int id){
         
         try {
@@ -147,7 +149,7 @@ public class RegistroRevista extends Conexion{
         
         return true;
     }
-    
+    // muestra si a una revista se le puede hacer comentar
     public boolean isComentar(int id){
         
         try {
@@ -167,7 +169,7 @@ public class RegistroRevista extends Conexion{
     }
     
     
-    
+    //inserta una ficero el cual lo retorna
     private InputStream archivo(HttpServletRequest request){
        InputStream inputStream = null;
         try {
@@ -181,7 +183,7 @@ public class RegistroRevista extends Conexion{
        }
        return inputStream;
     }
-    
+    //retorna el id de la ultima revista
     private int getUltimaRevista(){
         
         try {
@@ -197,7 +199,7 @@ public class RegistroRevista extends Conexion{
         }
         return 0;
     }
-    
+    //actualiza el costo por dia de una revista
     public void actualizarCostoDia(int costo, int id){
         
         try {
@@ -210,6 +212,7 @@ public class RegistroRevista extends Conexion{
         }
         
     }
+    //agrega una etiqueta a una revista
     public void agregarEtiquetaRevista(String id, String etiqueta){
         
         try {
@@ -230,6 +233,7 @@ public class RegistroRevista extends Conexion{
         }
         
     }
+    //muestra el titulo de una revista con la busqueda de su id
     private String getTituloRevista(String id){
         
         try {

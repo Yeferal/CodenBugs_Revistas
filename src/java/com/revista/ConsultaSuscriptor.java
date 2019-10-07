@@ -11,14 +11,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author yefer
- */
+
 public class ConsultaSuscriptor extends Conexion{
     
     
-    
+    //lista la revistas en las que el usuario no esta susrito
     public List listarRevistasNoSuscritas(String nombre){
         List<Revista> lista = new ArrayList<>();
         conectar();
@@ -43,7 +40,7 @@ public class ConsultaSuscriptor extends Conexion{
         return lista;
     }
     
-    
+    //lista los comentarios de la revista
     public List listarComentarios(int idRevista){
         List<Comentario> lista = new ArrayList<>();
         
@@ -71,7 +68,7 @@ public class ConsultaSuscriptor extends Conexion{
         return lista;
         
     }
-    
+    //lista las revistas a las que el usuario esta suscrito
     public List listarRevistasSiSuscritas(String nombre){
         List<Revista> lista = new ArrayList<>();
         conectar();
@@ -96,7 +93,7 @@ public class ConsultaSuscriptor extends Conexion{
         return lista;
     }
     
-    
+    //retorna dato de un autor en especifico de la base de datos
     public Usuario getAutor(String nombre){
         Usuario usuario = new Usuario();
         

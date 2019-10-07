@@ -8,7 +8,7 @@ public class MeGusta extends Conexion{
     
     
     
-    
+    //muestra los likes que se encuentra en una la revista
     public int verLikes(int idRevista){
         int numero = 0;
         try {
@@ -24,6 +24,7 @@ public class MeGusta extends Conexion{
         
         return numero;
     }
+    //inserta un like en la base de datos
     public void insertarMeGusta(String nombre, Revista revista){
         
         try {
@@ -40,6 +41,7 @@ public class MeGusta extends Conexion{
         } catch (SQLException e) {
         }
     }
+    //muestra la fecha actual 
     public String getFechaActual(){
         
         try {
@@ -52,7 +54,7 @@ public class MeGusta extends Conexion{
         }
         return "";
     }
-    
+    //muestra el id del suscriptor buscado en la base datos
     public int getIdSuscriptor(String nombre){
         
         try {
@@ -66,6 +68,7 @@ public class MeGusta extends Conexion{
         }
         return 0;
     }
+    //retorna un verdadero si se pueden hacer likes en la revista con el usuario
     public boolean isMeGustasSuscriptor(String nombre){
         
         try {

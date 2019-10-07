@@ -10,6 +10,8 @@ public final class SesionUsuario extends Conexion{
     public SesionUsuario(){
         
     }
+    
+    //actualiza la informacion del usurioa principal
     public void setInformacion(String nombre){
         conectar();
         try {

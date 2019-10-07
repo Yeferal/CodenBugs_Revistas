@@ -14,7 +14,7 @@ public class SesionLogin extends Conexion{
     public SesionLogin(){
         sesion.usuario = this.usuario;
     }
-    
+    //busca a un usuario
     public boolean buscarUsuario(String Nombre, String pass){
         if(verificarExistenciaAdministrador(Nombre)){
             if(verificarPassword(Nombre, pass, "administrador")){
@@ -40,7 +40,7 @@ public class SesionLogin extends Conexion{
         return false;
     }
     
-    
+    //verifica la eistencia de un adminsitrador
     public boolean  verificarExistenciaAdministrador(String nombreUsuario){
         try {
             stmt = conect.createStatement();
@@ -52,7 +52,7 @@ public class SesionLogin extends Conexion{
         }
         return true;
     }
-    
+    //verifica la existencia d eun usuario
     public boolean  verificarExistenciaUsuario(String nombreUsuario){
         try {
             stmt = conect.createStatement();
@@ -70,7 +70,7 @@ public class SesionLogin extends Conexion{
         return true;
     }
     
-    
+    //verifica la contrasenia
     public boolean verificarPassword(String nombreUsuario,String passwrdUsuario, String tipoUsuario){
         
         try {
@@ -86,7 +86,7 @@ public class SesionLogin extends Conexion{
         }
         return true;
     }
-    
+    //logea al usuario de la session
     public void logearUsuario(String nombre, String contrasenia, String tipoUsuario){
         usuario.setDatosPrincipales(nombre, contrasenia, tipoUsuario);
     }
@@ -101,7 +101,7 @@ public class SesionLogin extends Conexion{
         }
         return "";
     }
-    
+    //setea la informacion del usuario
     private void setInformacion(String nombre){
         try {
             stmt = conect.createStatement();

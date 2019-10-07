@@ -22,7 +22,7 @@ public class ListaCategorias extends Conexion{
         generarCadenaTags();
         return cadenaTags;
     }
-    
+    //genera la cadena de texto de categorias
     private void genearaCadena(){
         conectar();
         cadenaHTML = "<select name=\"categoria\" id=\"categoria\">\n";
@@ -41,7 +41,7 @@ public class ListaCategorias extends Conexion{
         } catch (SQLException e) {
         }
     }
-    
+    //genera la cadena de txto para las etiquetas
     private String generarCadenaTags(){
         conectar();
         cadenaTags = "<select name=\"tags\" id=\"tags\">\n";

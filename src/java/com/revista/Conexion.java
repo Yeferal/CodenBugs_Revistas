@@ -46,7 +46,7 @@ public class Conexion {
     public Conexion(){
         
     }
-    
+    //conecta a la base de datos
     public void conectar(){
         try {
             Class.forName(driver);
@@ -60,7 +60,7 @@ public class Conexion {
             System.out.println("Fallo de class");
         }
     }
-    
+    //desconecta de la base de datos
     public void desconectar(){
         try {
              //&& !conect.isClosed()

@@ -16,7 +16,7 @@ public class ActualizacionDatos extends Conexion{
         sesion.usuario = usuario;
     }
     
-    
+    //Actualiza la informacion del usuario que esta en sesion
     private void setInformacion(String nombre){
         try {
             stmt = conect.createStatement();

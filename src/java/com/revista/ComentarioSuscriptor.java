@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public class ComentarioSuscriptor extends Conexion{
     
     
-    
+    //inserta un nuevo comnetarioo a la base de datos
     public void insertaComentario(Usuario usuario, Comentario comentario, Revista revista){
         
         try {
@@ -31,7 +31,7 @@ public class ComentarioSuscriptor extends Conexion{
         }
     }
     
-    
+    //retorna la fecha  actual segun la base de datos
     public String getFechaActual(){
         
         try {
@@ -44,7 +44,7 @@ public class ComentarioSuscriptor extends Conexion{
         }
         return "";
     }
-    
+    //retorna el ud del suscriptor en busca de su nombre
     public int getIdSuscriptor(String nombre){
         
         try {

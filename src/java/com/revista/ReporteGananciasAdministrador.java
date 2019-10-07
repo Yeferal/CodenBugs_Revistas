@@ -10,7 +10,7 @@ public class ReporteGananciasAdministrador extends Conexion{
     
     private String consulta1, consulta2, consulta3;
     
-    
+    //Verifica el tipo de consulta para la base de datos
     public void verificarTipo(int tipo, String titulo, String fecha1, String fecha2){
         
         switch(tipo){
@@ -34,7 +34,7 @@ public class ReporteGananciasAdministrador extends Conexion{
         }
     }
     
-    
+    //lista ls suscripciones y las retorna
     public List listarSuscripcion(){
         List<Ganancia> lista = new ArrayList<>();
         
@@ -60,7 +60,7 @@ public class ReporteGananciasAdministrador extends Conexion{
         
         return lista;
     }
-    
+    //lisra los ingresos y los retorna
     public List listarIngresos(){
         List<Ganancia> lista = new ArrayList<>();
         
@@ -85,7 +85,7 @@ public class ReporteGananciasAdministrador extends Conexion{
         
         return lista;
     }
-    
+    //lista los totales y los retorna
     public List listarTotal(){
         List<Ganancia> lista = new ArrayList<>();
         
