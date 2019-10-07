@@ -47,7 +47,7 @@
             </div>
         </div><br><br><br>
         <p>Total de Ganacias: ${cantidad}</p>
-        
+        <p>Listado de Ganacias por Suscripcion</p>
         <table border="1" cellpadding="1">
             <thead>
                 <tr>
@@ -75,7 +75,7 @@
         </table>
                 <br><br>
                 
-                
+                <p>Listado de Cantidad de Suscripciones por Revsita</p>
         <table border="1" cellpadding="1">
             <thead>
                 <tr>

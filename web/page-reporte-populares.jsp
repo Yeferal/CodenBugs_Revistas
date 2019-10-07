@@ -26,7 +26,7 @@
                 </form>
                 
             </div><br>   
-        
+        <p>Listado de cantidad de LIKES por Revista</p>
         <table border="1">
             <thead>
                 <tr>
@@ -47,6 +47,7 @@
         </table>
 
         <br>
+        <p>LIstado de Likes</p>
         <table border="1">
             <thead>
                 

@@ -45,7 +45,7 @@
                 </form>
             </div>
         </div>
-        
+        <p>Listado de Sucripciones</p>
         <table border="1" cellpadding="1">
             <thead>
                 <tr>

@@ -24,7 +24,7 @@
                 </form>
                 
             </div><br>
-
+            <p>Listado de Cantidad de Comentarios por Revista</p>
         <table border="1">
             <thead>
                 <tr>
@@ -45,6 +45,7 @@
         </table>
 
         <br>
+        <p>Listado de comentarios</p>
         <table border="1">
             <thead>
                 <tr>
