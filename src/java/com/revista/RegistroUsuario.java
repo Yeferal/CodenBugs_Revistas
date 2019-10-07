@@ -114,4 +114,18 @@ public class RegistroUsuario extends Conexion{
             ex.printStackTrace();
         }
     }
+    
+    public void insertarAdministrador1(String nombre, String codigo, String pass){
+        
+        try {
+            conectar();
+            insetar = conect.prepareStatement(INSERT+administradro+"(codigo,nombre,password_usuario) "+VALUES+"(?,?,?)");
+            insetar.setString(1, codigo);
+            insetar.setString(2, nombre);
+            insetar.setString(3, pass);
+            insetar.executeUpdate();
+            desconectar();
+        } catch (SQLException e) {
+        }
+    }
 }

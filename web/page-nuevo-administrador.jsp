@@ -12,8 +12,16 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <p>Agregar Administrador</p>
         <form action="NuevoAdministrador" method="POST">
-            
+             <label for="nombre">Nombre</label><br>
+                <input type="text" class="nuevaR" name="nombre" id="nombre" required><br>
+                 <label for="codigo">Codigo</label><br>
+                <input type="text" class="nuevaR" name="codigo" id="codigo" required><br>
+                 <label for="passwr">Contraseña</label><br>
+                <input type="text" class="nuevaR" name="passwr" id="passwr" required><br>
+                <br>
+                <input type="submit" value="Comfirmar Admin" name="submit" id="btn1" class="btn1"/>
         </form>
     </body>
 </html>
